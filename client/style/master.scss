@@ -1,11 +1,43 @@
+@import './mixins.scss';
 @import './constants.scss';
+@import './variables.scss';
 
 body {
     background-color: $off-white;
 }
-#app-root {
-    div#App {
-        background-color: $white;
-        padding: 100px;
+
+div#App {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 100px;
+
+    @include flex($flex-direction: column, $justify-content: flex-start);   
+    
+    div#Header {
+        margin-bottom: $header-under;
+
+        h1 {
+            font-size: $header-name-size;
+        }
+        
+        #under-name {
+            @include flex;
+            h4 {
+                font-size: $under-name-size;
+                font-weight: $under-name-weight;
+                &:not(:last-of-type) {
+                    margin-right: $under-name-between;
+                }
+            }
+        }
+    }
+    
+    div#Landing {
+        p {
+            text-align: $p-text-align;
+            font-size: $p-font-size;
+            line-height: $p-line-height;
+        }
     }
 }
