@@ -8,15 +8,17 @@ body {
 
 div#App {
     width: 100%;
-    max-width: 800px;
+    max-width: $app-max-width;
     margin: auto;
-    padding: 100px;
+    padding: $app-padding;
 
-    @include flex($flex-direction: column, $justify-content: flex-start);   
+    @include flex($flex-direction: column, $justify-content: flex-start);
+
+    > div:not(:last-of-type) {
+        margin-bottom: $section-under;
+    }
     
     div#Header {
-        margin-bottom: $header-under;
-
         h1 {
             font-size: $header-name-size;
         }
@@ -40,4 +42,36 @@ div#App {
             line-height: $p-line-height;
         }
     }
+
+    div.Portfolio {
+        @include flex($flex-direction: column);
+
+        h2 {
+            font-size: $portfolio-header-size;
+
+        }
+
+        &:not(:last-of-type) {
+            margin-bottom: $section-under;
+        }
+    }
+}
+
+.content-md {
+    > * {
+        padding-left: $content-padding-side;
+        padding-right: $content-padding-side;
+        border-left: $content-border-width solid transparent;
+    }
+    &:not(div) {
+        > * {
+            transition-property: border-left;
+            transition-duration: $content-border-fade;
+        }
+        &:hover {
+            > * {
+                    border-left: $content-border-width solid $content-border-color;
+            }
+        }
+    }    
 }

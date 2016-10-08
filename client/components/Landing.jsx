@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import keyify from '../js/keyify'
+import Projects from './Projects';
+
+import renderContent from '../js/renderContent';
 import strings from '../json/Landing.json';
 
 class Landing extends React.Component {
     render() {
-        let text = keyify(strings.about.map(x => <p>{x}</p>))
+        let renderedContent = renderContent(strings.content)
         return <div id="Landing">
-            {text}
+            {renderedContent}
+            <Projects />
         </div>
     }
 }

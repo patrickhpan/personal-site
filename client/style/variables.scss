@@ -1,10 +1,21 @@
-$header-name-size: 5em;
-$header-under: 4em;
+$app-max-width: 840px;
+$app-padding: 100px;
 
-$under-name-size: 1.25em;
+$section-under: 4em;
+
+$header-name-size: 5em;
+
+$under-name-size: 1.3em;
 $under-name-weight: 400;
 $under-name-between: 3em;
 
+$portfolio-header-size: 3em;
+
 $p-text-align: justify;
-$p-font-size: 1.2em;
+$p-font-size: 1.25em;
 $p-line-height: 1 * $p-font-size;
+
+$content-padding-side: 5px;
+$content-border-width: 3px; 
+$content-border-color: $off-black;
+$content-border-fade: 0.3s;
