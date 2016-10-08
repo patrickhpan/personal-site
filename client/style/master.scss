@@ -1,0 +1,11 @@
+@import './constants.scss';
+
+body {
+    background-color: $off-white;
+}
+#app-root {
+    div#App {
+        background-color: $white;
+        padding: 100px;
+    }
+}

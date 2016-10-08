@@ -1,0 +1,10 @@
+{
+    "HelloWorld": {
+        "body": "Hello World!",
+        "link": "About"
+    },
+    "About": {
+        "body": "This site is built with node.js, react, react-router, webpack, and express.",
+        "link": "Back to Home"
+    } 
+}
