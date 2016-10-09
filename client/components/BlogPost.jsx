@@ -11,11 +11,10 @@ class BlogPost extends React.Component {
     }
     componentDidMount() {
         if(!this.props.params || this.props.params.slug) {
-            console.log(this.props.params)
+            return;
         }
         let slug = this.props.params.slug;
         getEntryBySlug(data => {
-            console.log(data)
             this.setState({
                 post: data.items[0]
             })
@@ -27,7 +26,6 @@ class BlogPost extends React.Component {
                 title: "Post not found."
             }
         }
-        console.log(post);
         return {
             title: post.fields.title,
             md: post.fields.body

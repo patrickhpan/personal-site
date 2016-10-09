@@ -1,6 +1,5 @@
 import contentful from 'contentful';
 
-console.log(process.env)
 let connection = contentful.createClient({
     accessToken: process.env.CONTENTFUL_TOKEN,
     space: process.env.CONTENTFUL_SPACE

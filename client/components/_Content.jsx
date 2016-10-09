@@ -13,6 +13,11 @@ class Content extends React.Component {
         
         if(!isNaN(limit)) {
             content = [...content.slice(0, limit), footer]
+        } else {
+            content = [...content, {
+                md: "**Back** to home.",
+                link: "/"
+            }]
         }
         let renderedContent = renderContent(content);
 
