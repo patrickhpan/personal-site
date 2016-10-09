@@ -40,6 +40,9 @@ module.exports = {
 				from: path.join(SETTINGS.SRCDIR, 'index.html')
 			}
 		]),
+		new webpack.DefinePlugin({
+			'process.env': JSON.stringify(process.env)
+		})
 	],
 	_port: 9000
 };

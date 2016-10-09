@@ -1,0 +1,7 @@
+{
+    "header": "Recent Writings",
+    "footer": {
+        "md": "**Read more** things I wrote.",
+        "link": "/blog"
+    }
+}

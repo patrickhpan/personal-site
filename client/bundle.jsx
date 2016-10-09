@@ -5,6 +5,8 @@ import { Router, hashHistory, browserHistory } from 'react-router';
 import routes from './routes';
 import './style/master.scss';
 
+import createConnection from './js/contentful';
+
 let history = process.env.NODE_ENV === 'production' ?
     browserHistory :
     hashHistory;
