@@ -4,6 +4,24 @@ import marked from 'marked';
 
 import keyify from '../js/keyify';
 
+class Content extends React.Component {
+    render() {
+        let limit = this.props.limit;
+        let id = this.props.id;
+
+        let { header, content, footer } = this.props.data;
+        if(!isNaN(limit)) {
+            content = [...content.slice(0, limit), footer]
+        }
+        let renderedContent = renderContent(content);
+
+        return <div id={id} className="Portfolio">
+            <h2>{header}</h2>
+            {renderedContent}
+        </div>
+    }
+}
+
 function renderItem(item) {
     let md = item.md;
     let link = item.link;
@@ -44,4 +62,7 @@ function renderContent(content, wrap = true) {
     return keyify(content.map(renderItem));
 }
 
-export default renderContent;
+
+
+export default Content;
+export { renderContent, renderItem }

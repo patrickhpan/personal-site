@@ -14,11 +14,13 @@ div#App {
 
     @include flex($flex-direction: column, $justify-content: flex-start);
 
-    > div:not(:last-of-type) {
-        margin-bottom: $section-under;
-    }
+    // > div:not(:last-of-type) {
+    //     margin-bottom: $section-under;
+    // }
     
     div#Header {
+        margin-bottom: $portfolio-under; 
+        
         h1 {
             font-size: $header-name-size;
         }
@@ -36,52 +38,48 @@ div#App {
     }
     
     div#Landing {
-        p {
-            text-align: $p-text-align;
-            font-size: $p-font-size;
-            line-height: $p-line-height;
-        }
 
-        > div:not(:last-of-type) {
-            margin-bottom: $section-under;
-        }
     }
 
     div.Portfolio {
         @include flex($flex-direction: column);
+        
+        &:not(:last-of-type) {
+            margin-bottom: $portfolio-under;
+        }
 
         h2 {
             font-size: $portfolio-header-size;
             margin-bottom: $portfolio-header-under;
         }
 
-        &:not(:last-of-type) {
-            margin-bottom: $section-under;
+        .content-container {
+            .content-md {
+                display: flex;
+                margin-bottom: $content-under;
+                > * {
+                    padding-left: $content-padding-side;
+                    padding-right: $content-padding-side;
+                    border-left: $content-border-width solid transparent;
+                }
+                &:not(div) {
+                    > * {
+                        transition-property: border-left;
+                        transition-duration: $content-border-fade;
+                    }
+                    &:hover {
+                        > * {
+                                border-left: $content-border-width solid $content-border-color;
+                        }
+                    }
+                }    
+                p {
+                    text-align: $p-text-align;
+                    font-size: $p-font-size;
+                    line-height: $p-line-height;
+                }
+            }
         }
     }
 }
 
-.content-container {
-    .content-md {
-        & {
-        // &:not(:last-of-type) {
-            margin-bottom: $content-under;
-        }
-        > * {
-            padding-left: $content-padding-side;
-            padding-right: $content-padding-side;
-            border-left: $content-border-width solid transparent;
-        }
-        &:not(div) {
-            > * {
-                transition-property: border-left;
-                transition-duration: $content-border-fade;
-            }
-            &:hover {
-                > * {
-                        border-left: $content-border-width solid $content-border-color;
-                }
-            }
-        }    
-    }
-}

@@ -1,5 +1,5 @@
 $white: #ffffff;
-$off-white: #fffdf6;
+$off-white: #fffefa;
 $black: #000000;
 $off-black: #222222;
 
@@ -10,12 +10,17 @@ $font1: 'Helvetica Neue',
     box-sizing: border-box;
     font-family: $font1;
     color: $off-black;
+    line-height: 140%;
 }
 
 body {
     margin: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    line-height: initial;
+    letter-spacing: -1px;
+}
 h1, h2, h3, h4, h5, h6, p {
     margin-top: 0;
     margin-bottom: 0;

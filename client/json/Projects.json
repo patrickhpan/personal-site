@@ -14,8 +14,12 @@
             "link": "http://skindeep.patrickpan.com"
         },
         {
-            "md": "**Real Friends** is a desktop app that analyzes your Facebook message history, allowing you to visualize the ebb and flow of your various online friendships.",
+            "md": "**Real Friends** is a desktop app that analyzes your Facebook message history, allowing you to visualize the ebb and flow of your numerous online friendships.",
             "link": "http://skindeep.patrickpan.com"
         }
-    ]
+    ],
+    "footer": {
+        "md": "**See all** of my projects.",
+        "link": "/projects"
+    }
 }

@@ -7,5 +7,9 @@
         {
             "md": "Currently, I’m a sophomore at Harvard, studying Computer Science on the Mind-Brain-Behavior track. I’m also joint-enrolled at the New England Conservatory, where I study piano performance."
         }
-    ]
+    ],
+    "footer": {
+        "md": "**Read more** about me.",
+        "link": "/about"
+    }
 }
