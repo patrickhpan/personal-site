@@ -1,11 +1,11 @@
 {
   "name": "simple-react-webpack",
   "version": "0.0.1",
-  "main": "prodServer.js",
   "scripts": {
     "build": "webpack -p --config webpack/webpack.config.prod.js --progress --profile --colors",
     "dev": "node devServer.js",
-    "deploy": "npm run build && node prodServer.js"
+    "deploy": "npm run build && node prodServer.js",
+    "start": "node prodServer.js"
   },
   "dependencies": {
     "babel-core": "6.10.4",
