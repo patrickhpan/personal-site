@@ -10,11 +10,12 @@ class BlogPost extends React.Component {
         }
     }
     componentDidMount() {
-        if(!this.props.params || this.props.params.slug) {
+        if(!this.props.params || !this.props.params.slug) {
             return;
         }
         let slug = this.props.params.slug;
         getEntryBySlug(data => {
+            console.log(data);
             this.setState({
                 post: data.items[0]
             })
@@ -32,6 +33,7 @@ class BlogPost extends React.Component {
         }
     }
     render() {
+        console.log(this.state.post)
         if(!this.state.post) {
             return null;
         }
