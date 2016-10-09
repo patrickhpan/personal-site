@@ -6,8 +6,8 @@ import { About, Projects } from './SimpleContent';
 class Landing extends React.Component {
     render() {
         return <div id="Landing">
-            <About limit={1} />
-            <Projects limit={2} />
+            <About limit={2} />
+            <Projects limit={4} />
         </div>
     }
 }

@@ -10,6 +10,7 @@ class Content extends React.Component {
         let id = this.props.id;
 
         let { header, content, footer } = this.props.data;
+        
         if(!isNaN(limit)) {
             content = [...content.slice(0, limit), footer]
         }

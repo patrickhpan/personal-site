@@ -1,4 +1,4 @@
-$app-max-width: 700px;
+$app-max-width: 640px;
 $app-padding: 100px 10px 0 10px;
 
 $header-name-size: 5em;
@@ -8,13 +8,15 @@ $under-name-between: 3em;
 
 $portfolio-header-size: 3em;
 $portfolio-header-under: 3em * (1em / $portfolio-header-size);
-$portfolio-under: 4em;
+$portfolio-under: 3.5em;
 
-$content-padding-side: 5px;
-$content-border-width: 3px; 
-$content-border-color: $off-black;
+$content-padding-side: 6px;
+$content-border-width: 3px;
+$content-border-start-color: rgba($off-black, 0.1);
+$content-border-end-color: $off-black; 
+
 $content-border-fade: 0.3s;
-$content-under: 2em;
+$content-under: 1.5em;
 
 $p-text-align: justify;
 $p-font-size: 1.25em;

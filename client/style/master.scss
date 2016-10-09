@@ -13,10 +13,6 @@ div#App {
     padding: $app-padding;
 
     @include flex($flex-direction: column, $justify-content: flex-start);
-
-    // > div:not(:last-of-type) {
-    //     margin-bottom: $section-under;
-    // }
     
     div#Header {
         margin-bottom: $portfolio-under; 
@@ -35,13 +31,10 @@ div#App {
                 }
             }
         }
-    }
-    
-    div#Landing {
+    }    
+}
 
-    }
-
-    div.Portfolio {
+div.Portfolio {
         @include flex($flex-direction: column);
         
         &:not(:last-of-type) {
@@ -56,7 +49,10 @@ div#App {
         .content-container {
             .content-md {
                 display: flex;
-                margin-bottom: $content-under;
+                &:not(:last-child) {
+                    margin-bottom: $content-under;
+                }
+            
                 > * {
                     padding-left: $content-padding-side;
                     padding-right: $content-padding-side;
@@ -64,12 +60,14 @@ div#App {
                 }
                 &:not(div) {
                     > * {
-                        transition-property: border-left;
-                        transition-duration: $content-border-fade;
+                        @at-root div#Landing & {
+                            border-left-color: $content-border-start-color;
+                        }
+                        transition: border-left $content-border-fade linear;
                     }
                     &:hover {
                         > * {
-                                border-left: $content-border-width solid $content-border-color;
+                            border-left: $content-border-width solid $content-border-end-color;
                         }
                     }
                 }    
@@ -81,5 +79,3 @@ div#App {
             }
         }
     }
-}
-
