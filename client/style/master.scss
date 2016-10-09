@@ -48,6 +48,13 @@ div#App {
                 &:not(:last-of-type) {
                     margin-right: $under-name-between;
                 }
+
+                padding-bottom: $under-name-padding;
+                border-bottom: $under-name-border-width solid transparent;
+                transition: border-bottom $under-name-fade;
+                &:hover {
+                    border-bottom-color: $under-name-border-color;
+                }
             }
         }
     }    
@@ -89,7 +96,7 @@ div.Portfolio {
                     @at-root div#Landing & {
                         border-left-color: $content-border-start-color;
                     }
-                    transition: border-left $content-border-fade linear;
+                    transition: border-left $content-border-fade;
                 }
                 &:hover,
                 &:active {

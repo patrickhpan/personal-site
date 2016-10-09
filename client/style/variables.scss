@@ -4,9 +4,14 @@ $app-mobile-padding: 20px 4px 20px 4px;
 
 $header-name-size: 5em;
 $header-mobile-name-size: 4em;
+
 $under-name-size: 1.3em;
 $under-name-weight: 400;
 $under-name-between: 3em;
+$under-name-padding: 4px;
+$under-name-border-width: 2px;
+$under-name-border-color: $off-black;
+$under-name-fade: 0.3s;
 
 $portfolio-header-size: 3em;
 $portfolio-mobile-header-size: 2.2em;
@@ -14,7 +19,7 @@ $portfolio-header-under: 3em * (1em / $portfolio-header-size);
 $portfolio-under: 3.5em;
 
 $content-padding-side: 7px;
-$content-border-width: 3px;
+$content-border-width: 4px;
 $content-border-start-color: rgba($off-black, 0.1);
 $content-border-end-color: $off-black; 
 
