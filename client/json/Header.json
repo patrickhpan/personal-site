@@ -1,8 +1,17 @@
 {
     "name": "Patrick H. Pan",
     "underName": [
-        "Programmer",
-        "Pianist",
-        "Photographer"
+        {
+            "text": "Programmer",
+            "link": "/projects"
+        },
+        {
+            "text": "Pianist",
+            "link": "/piano"
+        },
+        {
+            "text": "Photographer",
+            "link": "/photos"
+        }
     ]
 }
