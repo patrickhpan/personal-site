@@ -93,9 +93,7 @@ div.Portfolio {
             
             &:not(div) {
                 > * {
-                    @at-root div#Landing & {
-                        border-left-color: $content-border-start-color;
-                    }
+                    border-left-color: $content-border-start-color;
                     transition: border-left $content-border-fade;
                 }
                 &:hover,
