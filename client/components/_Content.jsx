@@ -20,9 +20,10 @@ class Content extends React.Component {
             }]
         }
         let renderedContent = renderContent(content);
+        let href = `/${id}`
 
         return <div id={id} className="Portfolio">
-            <h2>{header}</h2>
+            <Link to={href}><h2>{header}</h2></Link>
             {renderedContent}
         </div>
     }

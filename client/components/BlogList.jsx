@@ -35,14 +35,10 @@ class BlogList extends React.Component {
 
         let data = staticContent
         data.content = content;
-        
-        let limitProps = this.props.limit ? 
-            { limit: this.props.limit } :
-            {}; 
 
         return <Content
-            data={data}
-            {...limitProps}  
+            {...this.props}
+            data={data}  
         />
     }
 }
