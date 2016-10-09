@@ -35,47 +35,48 @@ div#App {
 }
 
 div.Portfolio {
-        @include flex($flex-direction: column);
+    @include flex($flex-direction: column);
+    
+    &:not(:last-of-type) {
+        margin-bottom: $portfolio-under;
+    }
+
+    h2 {
+        font-size: $portfolio-header-size;
+        margin-bottom: $portfolio-header-under;
+    }
+
+    .content-container {
+        .content-md {
+            display: flex;
+            &:not(:last-child) {
+                margin-bottom: $content-under;
+            }
         
-        &:not(:last-of-type) {
-            margin-bottom: $portfolio-under;
-        }
-
-        h2 {
-            font-size: $portfolio-header-size;
-            margin-bottom: $portfolio-header-under;
-        }
-
-        .content-container {
-            .content-md {
-                display: flex;
-                &:not(:last-child) {
-                    margin-bottom: $content-under;
-                }
+            > * {
+                padding-left: $content-padding-side;
+                padding-right: $content-padding-side;
+                border-left: $content-border-width solid transparent;
+            }
             
+            &:not(div) {
                 > * {
-                    padding-left: $content-padding-side;
-                    padding-right: $content-padding-side;
-                    border-left: $content-border-width solid transparent;
+                    @at-root div#Landing & {
+                        border-left-color: $content-border-start-color;
+                    }
+                    transition: border-left $content-border-fade linear;
                 }
-                &:not(div) {
+                &:hover {
                     > * {
-                        @at-root div#Landing & {
-                            border-left-color: $content-border-start-color;
-                        }
-                        transition: border-left $content-border-fade linear;
+                        border-left: $content-border-width solid $content-border-end-color !important;
                     }
-                    &:hover {
-                        > * {
-                            border-left: $content-border-width solid $content-border-end-color;
-                        }
-                    }
-                }    
-                p {
-                    text-align: $p-text-align;
-                    font-size: $p-font-size;
-                    line-height: $p-line-height;
                 }
+            }    
+            p {
+                text-align: $p-text-align;
+                font-size: $p-font-size;
+                line-height: $p-line-height;
             }
         }
     }
+}
