@@ -29,9 +29,9 @@ module.exports = {
 			}
 		]),
 		new webpack.DefinePlugin({
-			'process.env': Object.assign(process.env, {
+			'process.env': JSON.stringify(Object.assign(process.env, {
 				NODE_ENV: '"production"'
-			})
+			}))
 		})
 	]
 };
