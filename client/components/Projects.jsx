@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'react-router';
 
-import renderContent from '../js/renderContent'
+import renderContent from './Content'
 import strings from '../json/Projects.json';
 
 class Projects extends React.Component {

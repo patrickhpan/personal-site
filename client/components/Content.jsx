@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import marked from 'marked';
 
-import keyify from './keyify';
+import keyify from '../js/keyify';
 
 function renderItem(item) {
     let md = item.md;

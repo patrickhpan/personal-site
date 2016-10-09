@@ -10,6 +10,7 @@ $under-name-weight: 400;
 $under-name-between: 3em;
 
 $portfolio-header-size: 3em;
+$portfolio-header-under: 2em * (1em / $portfolio-header-size);
 
 $p-text-align: justify;
 $p-font-size: 1.25em;
@@ -19,3 +20,4 @@ $content-padding-side: 5px;
 $content-border-width: 3px; 
 $content-border-color: $off-black;
 $content-border-fade: 0.3s;
+$content-under: 2em;

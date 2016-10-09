@@ -41,6 +41,10 @@ div#App {
             font-size: $p-font-size;
             line-height: $p-line-height;
         }
+
+        > div:not(:last-of-type) {
+            margin-bottom: $section-under;
+        }
     }
 
     div.Portfolio {
@@ -48,7 +52,7 @@ div#App {
 
         h2 {
             font-size: $portfolio-header-size;
-
+            margin-bottom: $portfolio-header-under;
         }
 
         &:not(:last-of-type) {
@@ -57,21 +61,27 @@ div#App {
     }
 }
 
-.content-md {
-    > * {
-        padding-left: $content-padding-side;
-        padding-right: $content-padding-side;
-        border-left: $content-border-width solid transparent;
-    }
-    &:not(div) {
+.content-container {
+    .content-md {
+        & {
+        // &:not(:last-of-type) {
+            margin-bottom: $content-under;
+        }
         > * {
-            transition-property: border-left;
-            transition-duration: $content-border-fade;
+            padding-left: $content-padding-side;
+            padding-right: $content-padding-side;
+            border-left: $content-border-width solid transparent;
         }
-        &:hover {
+        &:not(div) {
             > * {
-                    border-left: $content-border-width solid $content-border-color;
+                transition-property: border-left;
+                transition-duration: $content-border-fade;
             }
-        }
-    }    
+            &:hover {
+                > * {
+                        border-left: $content-border-width solid $content-border-color;
+                }
+            }
+        }    
+    }
 }
