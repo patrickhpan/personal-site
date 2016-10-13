@@ -2,12 +2,12 @@
     "header": "Projects",
     "content": [
         {
-            "md": "**Skindeep** is a mobile app that diagnoses melanoma, the leading cause of cancer in young adults, using just your cellphone camera. Built with two friends in 36 hours, Skindeep was awarded Best Machine Learning Project at HackTech 2016.",
-            "link": "http://skindeep.patrickpan.com"
-        },
-        {
             "md": "**snapchat.patrickpan.com** is a visual résumé in the form of a recreation of the Snapchat mobile app.",
             "link": "http://snapchat.patrickpan.com"
+        },
+        {
+            "md": "**Skindeep** is a mobile app that diagnoses melanoma, the leading cause of cancer in young adults, using just your cellphone camera. Built with two friends in 36 hours, Skindeep was awarded Best Machine Learning Project at HackTech 2016.",
+            "link": "http://skindeep.patrickpan.com"
         },
         {
             "md": "**RhymeGenius** is a webapp allowing you to visualize the complex rhyme schemes of hip-hop songs in real time as the song plays. ",
@@ -21,5 +21,6 @@
     "footer": {
         "md": "**See all** of my projects.",
         "link": "/projects"
-    }
+    },
+    "defaultLength": 4
 }

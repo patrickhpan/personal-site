@@ -3,5 +3,6 @@
     "footer": {
         "md": "**Read more** things I wrote.",
         "link": "/blog"
-    }
+    },
+    "defaultLength": 4
 }

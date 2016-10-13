@@ -79,6 +79,8 @@ div.Portfolio {
     }
 
     .content-container {
+        @include flex($flex-direction: column, $align-items: flex-start);
+
         .content-md {
             display: flex;
             &:not(:last-child) {
@@ -107,6 +109,14 @@ div.Portfolio {
                 font-size: $p-font-size;
                 line-height: $p-line-height;
             }
+        }
+        .content-img {
+            width: 100%;
+            margin: $content-img-margin;
+            margin-top: initial;
+            max-width: $content-img-max-width;
+
+            align-self: center;
         }
     }
 }

@@ -1,4 +1,4 @@
-$app-max-width: 640px;
+$app-max-width: 800px;
 $app-padding: 100px 10px 100px 10px;
 $app-mobile-padding: 20px 4px 20px 4px;
 
@@ -23,11 +23,14 @@ $content-border-width: 4px;
 $content-border-start-color: rgba($off-black, 0.1);
 $content-border-end-color: $off-black; 
 
+$content-img-margin: 2em;
+$content-img-max-width: 30em;
+
 $content-border-fade: 0.4s;
 $content-under: 1.5em;
 
 $p-text-align: justify;
-$p-font-size: 1.25em;
+$p-font-size: 1.2em;
 $p-line-height: 1 * $p-font-size;
 
 

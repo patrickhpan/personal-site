@@ -7,9 +7,9 @@ import BlogList from './BlogList';
 class Landing extends React.Component {
     render() {
         return <div id="Landing">
-            <About id="About" limit={2} />
-            <Projects id="Projects" limit={4} />
-            <BlogList id="Blog" limit={2} /> 
+            <About id="About" limit={true} />
+            <Projects id="Projects" limit={true} />
+            <BlogList id="Blog" limit={true} /> 
         </div>
     }
 }
