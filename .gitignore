@@ -41,3 +41,7 @@ build
 
 # Environment Variables
 .env
+
+# Misc files
+.DS_Store
+.vscode

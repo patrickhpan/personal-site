@@ -93,11 +93,10 @@ div.Portfolio {
             
             &:not(div) {
                 > * {
-                    border-left-color: $content-border-start-color;
+                    border-left-color: $content-border-start-color !important;
                     transition: border-left $content-border-fade;
                 }
-                &:hover,
-                &:active {
+                &:hover {
                     > * {
                         border-left: $content-border-width solid $content-border-end-color !important;
                     }
