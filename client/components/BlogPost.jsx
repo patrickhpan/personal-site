@@ -23,7 +23,7 @@ class BlogPost extends React.Component {
             this.setState({
                 post: data.items[0]
             })
-        }, 'blog-post', slug);
+        }, slug);
     }
     formatPost(post) {
         if(post === undefined) {

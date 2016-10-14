@@ -27,15 +27,19 @@ module.exports = {
 		loaders: loaders
 	},
 	plugins: [
-		new CopyWebpackPlugin([
-			{
-				from: path.join(SETTINGS.SRCDIR, 'index.html')
-			}
-		]),
+		new CopyWebpackPlugin([{
+			from: path.join(SETTINGS.SRCDIR, 'index.html')
+		}]),
 		new webpack.DefinePlugin({
 			'process.env': JSON.stringify(Object.assign(dotenv.parse(envFile), {
 				NODE_ENV: 'production'
 			}))
 		})
-	]
+	],
+	node: {
+		fs: 'empty',
+		net: 'empty',
+		tls: 'empty',
+		dns: 'empty'
+	},
 };

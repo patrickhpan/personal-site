@@ -1,36 +1,29 @@
-import contentful from 'contentful';
+import request from 'request';
+import resolveUrl from './resolveUrl'
 
-let connection = contentful.createClient({
-    accessToken: process.env.CONTENTFUL_TOKEN,
-    space: process.env.CONTENTFUL_SPACE
-})
-
-function createConnection() {
-    return connection;
+function getNewestEntries(cb, options) {
+    let { limit, skip } = options;
+    let qp = { limit, skip };
+    request({
+        url: resolveUrl('/blog/posts/newest'),
+        qp: qp
+    }, (err, res, body) => {
+        let json = JSON.parse(body)
+        cb(json)
+    });
 }
 
-function getNewestEntries(cb, contentType, limit = 10, skip = 0) {
-    connection.getEntries({
-        content_type: contentType,
-        limit: limit,
-        skip: skip,
-        order: "-fields.publishDate"
-    }).then(cb).catch(console.error)
+function getEntryBySlug(cb, slug) {
+    if (!slug) return;
+    request({
+        url: resolveUrl(`/blog/posts/${slug}`)
+    }, (err, res, body) => {
+        let json = JSON.parse(body);
+        cb(json);
+    })
 }
 
-function getEntryBySlug(cb, contentType, slug) {
-    connection.getEntries({
-        content_type: contentType, 
-        "fields.slug": slug
-    }).then(cb).catch(console.error)
-}
-
-window.contentful = connection;
-window.getNewestEntries = getNewestEntries;
-window.getEntryBySlug = getEntryBySlug;
-
-export default createConnection;
 export {
     getNewestEntries,
     getEntryBySlug
-}
+};

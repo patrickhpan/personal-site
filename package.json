@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "webpack -p --config webpack/webpack.config.prod.js --progress --profile --colors",
-    "dev": "node devServer.js",
+    "dev": "forever devServer.js",
     "deploy": "npm run build && node prodServer.js",
     "start": "node prodServer.js"
   },
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "eslint-plugin-react": "^6.0.0",
+    "forever": "^0.15.2",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "webpack-dev-middleware": "^1.6.1",

@@ -39,14 +39,18 @@ module.exports = {
 	plugins: [
 		new webpack.NoErrorsPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
-		new CopyWebpackPlugin([
-			{
-				from: path.join(SETTINGS.SRCDIR, 'index.html')
-			}
-		]),
+		new CopyWebpackPlugin([{
+			from: path.join(SETTINGS.SRCDIR, 'index.html')
+		}]),
 		new webpack.DefinePlugin({
 			'process.env': JSON.stringify(dotenv.parse(envFile))
 		})
 	],
+	node: {
+		fs: 'empty',
+		net: 'empty',
+		tls: 'empty',
+		dns: 'empty'
+	},
 	_port: 9000
 };

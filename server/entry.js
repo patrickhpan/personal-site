@@ -1,10 +1,10 @@
 const express = require('express');
 
-const helloRoute = require('./routes/hello');
+const contentful = require('./routes/contentful');
 
 let app = express.Router();
 
-app.use('/hello', helloRoute)
+app.use('/blog', contentful)
 
 module.exports = app; 
 module.exports.context = require;
