@@ -33,4 +33,6 @@ $p-text-align: justify;
 $p-font-size: 1.2em;
 $p-line-height: 1 * $p-font-size;
 
-
+$blog-header-size: 3em;
+$blog-mobile-header-size: 2.2em;
+$blog-header-under: 3em * (1em / $portfolio-header-size);
