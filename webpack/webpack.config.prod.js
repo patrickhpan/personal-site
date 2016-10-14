@@ -1,7 +1,11 @@
-var webpack = require('webpack');
-var path = require('path');
-var loaders = require('./webpack.loaders');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const fs = require('fs');
+const dotenv = require('dotenv');
+const webpack = require('webpack');
+const path = require('path');
+const loaders = require('./webpack.loaders');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const envFile = fs.readFileSync('.env', 'utf8');
 
 const SETTINGS = {
 	SRCDIR: path.join(__dirname, '..', 'client'),
@@ -29,8 +33,8 @@ module.exports = {
 			}
 		]),
 		new webpack.DefinePlugin({
-			'process.env': JSON.stringify(Object.assign(process.env, {
-				NODE_ENV: '"production"'
+			'process.env': JSON.stringify(Object.assign(dotenv.parse(envFile), {
+				NODE_ENV: 'production'
 			}))
 		})
 	]

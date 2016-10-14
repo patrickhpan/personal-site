@@ -1,14 +1,23 @@
+// Load environment variables
 require('dotenv').config();
 
 const PORT = process.env.PORT || 8080;
 
-var express = require('express');
-var path = require('path');
-var serveStatic = require('serve-static');
+const express = require('express');
+const path = require('path');
+const serveStatic = require('serve-static');
 
-var app = express();
+// Initialize server
+let app = express();
+let server = require('./server/entry');
 
+// Serve built client
 app.use(serveStatic('build'))
+
+// server
+app.use(server)
+
+// Redirect remaining requests to client root
 app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 })
