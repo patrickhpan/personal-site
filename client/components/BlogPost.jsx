@@ -17,12 +17,14 @@ class BlogPost extends React.Component {
         if(!this.props.params || !this.props.params.slug) {
             return;
         }
+
         let slug = this.props.params.slug;
-        getEntryBySlug(data => {
-            this.setState({
-                post: data.items[0]
-            })
-        }, slug);
+        getEntryBySlug(slug)
+            .then(data => {
+                this.setState({
+                    post: data.items[0]
+                })
+            });
     }
     formatPost(post) {
         if(post === undefined) {

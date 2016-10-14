@@ -1,26 +1,20 @@
-import request from 'request';
+import request from 'request-promise';
 import resolveUrl from './resolveUrl'
 
-function getNewestEntries(cb, options) {
+function getNewestEntries(options) {
     let { limit, skip } = options;
     let qp = { limit, skip };
-    request({
+    return request({
         url: resolveUrl('/blog/posts/newest'),
         qp: qp
-    }, (err, res, body) => {
-        let json = JSON.parse(body)
-        cb(json)
-    });
+    }).then(body => JSON.parse(body));
 }
 
-function getEntryBySlug(cb, slug) {
+function getEntryBySlug(slug) {
     if (!slug) return;
-    request({
+    return request({
         url: resolveUrl(`/blog/posts/${slug}`)
-    }, (err, res, body) => {
-        let json = JSON.parse(body);
-        cb(json);
-    })
+    }).then(body => JSON.parse(body))
 }
 
 export {

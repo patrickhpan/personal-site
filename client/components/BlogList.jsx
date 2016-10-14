@@ -12,11 +12,12 @@ class BlogList extends React.Component {
         }
     }
     componentDidMount() {
-        getNewestEntries(data => {
-            this.setState({
-                content: data.items
+        getNewestEntries('blog-post')
+            .then(data => {
+                this.setState({
+                    content: data.items
+                })
             })
-        }, 'blog-post');
     }
     processBlogPost(post) {
         let { title, blurb } = post.fields;
