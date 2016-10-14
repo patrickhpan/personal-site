@@ -32,7 +32,11 @@ app.use(webpackHotMiddleware(compiler, {
 // Import server as hot-reload
 let loadServer = () => require('./server/entry');
 let server = loadServer()
-app.use(server)
+
+// Wrap server in a function so that it can change
+app.use((req, res, next) => {
+    server(req, res, next)
+})
 
 // Listen for change in server
 const serverWatch = chokidar.watch('./server/**/*.*');
@@ -41,7 +45,7 @@ serverWatch.on('ready', () => {
         console.log("Reloading server");
         // Re-require server
         emptyCache(server.context);
-        server = loadServer()
+        server = loadServer();
     })
 })
 
