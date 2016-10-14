@@ -15,7 +15,6 @@ router.get('/posts/newest', (req, res) => {
 })
 
 router.get('/posts/:slug', (req, res) => {
-    console.log(req.params.slug)
     if (!req.params.slug) return;
     myContentful.getEntryBySlug('blog-post',
         req.params.slug
