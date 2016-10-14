@@ -32,7 +32,7 @@ class BlogPost extends React.Component {
             }
         }
 
-        let splitBody = post.fields.body.split(/\n+/g);
+        let splitBody = post.fields.body.split(/\n\n/g);
 
         return {
             title: post.fields.title,

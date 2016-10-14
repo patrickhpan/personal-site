@@ -12,12 +12,6 @@ body {
     background-color: $off-white;
 }
 
-p {
-    text-align: $p-text-align;
-    font-size: $p-font-size;
-    line-height: $p-line-height;
-}
-
 div#App {
     width: 100%;
     max-width: $app-max-width;
@@ -97,6 +91,20 @@ div#App {
                     padding-left: $content-padding-side;
                     padding-right: $content-padding-side;
                     border-left: $content-border-width solid transparent;
+
+                    text-align: $p-text-align;
+                    font-size: $p-font-size;
+                    &, 
+                    & > * {
+                        line-height: $p-line-height;
+                    }
+                }
+
+                > ul, 
+                > ol {
+                    margin-left: $content-list-margin-left;
+                    margin-top: 0;
+                    margin-bottom: 0;
                 }
                 
                 &:not(div) {

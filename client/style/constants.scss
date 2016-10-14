@@ -6,11 +6,14 @@ $off-black: #332e2e;
 $font1: 'Helvetica Neue', 
     sans-serif;
 
+$font2: 'Helvetica Neue',
+    sans-serif;
+
 * {
     box-sizing: border-box;
-    font-family: $font1;
     color: $off-black;
     line-height: 140%;
+    font-family: $font2;
 }
 
 body {
@@ -21,6 +24,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: initial;
     margin-top: 0;
     margin-bottom: 0;
+    &, & > * {
+        font-family: $font1;
+    }
 }
 
 h1, h2 {
