@@ -1,4 +1,5 @@
-const contentful = require('contentful');
+const contentful = require('contentful')
+const cache = require('./cache')
 
 let connection = contentful.createClient({
     accessToken: process.env.CONTENTFUL_TOKEN,
@@ -17,20 +18,67 @@ function getNewestEntries(contentType, options) {
     let { limit, skip } = options;
     let defaultLimit = 10,
         defaultSkip = 0;
-
-    return connection.getEntries({
-        content_type: contentType,
-        limit: limit || defaultLimit,
-        skip: skip || defaultSkip,
-        order: "-fields.publishDate"
-    })
+    limit = limit || defaultLimit;
+    skip = skip || defaultSkip;
+    
+    let cacheKey = `contentful#${contentType}#newest#${limit}#${skip}`;
+    return cache.get(cacheKey, undefined)
+        .then(value => {
+            if (value !== undefined) {
+                return value;
+            }
+            return connection.getEntries({
+                content_type: contentType,
+                limit: limit,
+                skip: skip,
+                order: "-fields.publishDate"
+            }).then(entries => {
+                cache.set(cacheKey, entries);
+                return entries;
+            })     
+        })
+        .catch(err => {
+            console.error(err)
+            return connection.getEntries({
+                content_type: contentType,
+                limit: limit,
+                skip: skip,
+                order: "-fields.publishDate"
+            }).then(entries => {
+                cache.set(cacheKey, entries);
+                return entries;
+            })
+        })
 }
 
 function getEntryBySlug(contentType, slug) {
-    return connection.getEntries({
-        content_type: contentType, 
-        "fields.slug": slug
-    })
+    let cacheKey = `contentful#${contentType}#entry#${slug}`
+
+    return cache.get(cacheKey)    
+        .then(value => {
+            if (value !== undefined) {
+                return value;
+            } 
+            return connection.getEntries({
+                content_type: contentType, 
+                "fields.slug": slug
+            }).then(entry => {
+                cache.set(cacheKey, entry);
+                return entry;
+            })
+        })
+        .catch(err => {
+            console.error(err)
+            connection.getEntries({
+                content_type: contentType, 
+                "fields.slug": slug
+            }).then(entry => {
+                cache.set(cacheKey, entry);
+                return entry;
+            }).catch(contentfulError => {
+                return c
+            })
+        })
 }
 
 module.exports = {

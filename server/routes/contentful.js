@@ -9,7 +9,10 @@ router.get('/posts/newest', (req, res) => {
         skip: req.query.skip
     }).then(data => {
         res.json(data)
-    }).catch((err) => {
+    }).catch(err => {
+        if (err instanceof Error) {
+            console.log(err)
+        }
         res.json(err)
     })
 })
@@ -21,6 +24,9 @@ router.get('/posts/:slug', (req, res) => {
     ).then(data => {
         res.json(data)
     }).catch(err => {
+        if (err instanceof Error) {
+            console.log(err)
+        }
         res.json(err)
     })
 })
