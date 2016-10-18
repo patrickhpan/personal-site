@@ -30,6 +30,11 @@ $content-img-max-width: 30em;
 $content-border-fade: 0.4s;
 $content-under: 1.5em;
 
+$tag-border-width: $under-name-border-width;
+$tag-border-start-color: $content-border-start-color;
+$tag-border-end-color: $content-border-end-color;
+$tag-border-fade: $under-name-fade;
+
 $p-text-align: justify;
 $p-font-size: 1.15em;
 $p-line-height: 1.15 * $p-font-size;

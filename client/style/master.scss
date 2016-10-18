@@ -128,6 +128,16 @@ div#App {
 
                 align-self: center;
             }
+            .tags {
+                .tag {
+                    font-style: italic;
+                    border-bottom: $tag-border-width solid $tag-border-start-color;
+                    transition: border-bottom $tag-border-fade;
+                    &:hover {
+                        border-bottom: $tag-border-width solid $tag-border-end-color;
+                    }
+                }
+            }
         }
     }
 }

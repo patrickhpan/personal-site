@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
 import marked from 'marked';
+import flatten from 'array-flatten';
 
 import { renderItem } from './_Content';
 import keyify from '../js/keyify'
@@ -42,6 +44,21 @@ class BlogPost extends React.Component {
             }})
         }
     }
+    renderTags(tags) {
+        let createdTags = keyify(flatten(tags.map((tag, i) => {
+            let urlTag = tag.replace(/\s+/g, '-');
+            return [
+                <Link className="tag" to={`/blog/tag/${urlTag}`}>
+                    {tag}
+                </Link>,
+                <span>, </span>
+            ]
+        })));
+        createdTags.pop();
+        return <div className="tags content-md">
+            <p>Tags: {createdTags}</p> 
+        </div>
+    }
     render() {
         if(!this.state.post) {
             return null;
@@ -49,14 +66,18 @@ class BlogPost extends React.Component {
 
         let { title, markdowns } = this.formatPost(this.state.post);
 
-        let content = keyify(markdowns.map(md => <div className="content-md" dangerouslySetInnerHTML={md} />));
+        let content = keyify(markdowns.map(md =>
+            <div className="content-md" dangerouslySetInnerHTML={md} />
+        ));
 
+        let renderedTags = this.renderTags(this.state.post.fields.tags);        
         let renderedFooter = keyify(renderItem(footer));
 
         return <div className="BlogPost"> 
             <h2>{title}</h2>
             <div className="content-container">
                 {content}
+                {renderedTags}
                 {renderedFooter}
             </div>
         </div>
