@@ -24,6 +24,15 @@ function parseResponse(data) {
     return JSON.parse(data[0]);
 }
 
+function createAssetURL(link) {
+    return createLightroomURL([{
+            key: 'spaces',
+            value: LIGHTROOM_SPACE
+        },
+        link
+    ])
+}
+
 function getAssets(id) {
     let url = createLightroomURL([{
         key: 'spaces',
@@ -40,11 +49,11 @@ function getAssets(id) {
         .then(data => {
             let links = data.links;
             return {
-                full: links['/rels/rendition_type/2048'].href,
-                small: links['/rels/rendition_type/640'].href,
-                thumbnail: links['/rels/rendition_type/thumbnail2x'].href
+                full: createAssetURL(links['/rels/rendition_type/2048'].href),
+                small: createAssetURL(links['/rels/rendition_type/640'].href),
+                thumbnail: createAssetURL(links['/rels/rendition_type/thumbnail2x'].href)
             }
-        });
+        }).catch(console.error);
 }
 
 function getImages(album = LIGHTROOM_ALBUM) {

@@ -59,6 +59,10 @@ div#App {
         }
     }    
 
+    div#Landing {
+        width: 100%;
+    }
+
     div.Portfolio,
     div.BlogPost {
         @include flex($flex-direction: column);
@@ -142,3 +146,16 @@ div#App {
     }
 }
 
+.Gallery {
+    @include flex($flex-direction: row!important);
+    flex-wrap: wrap;
+    .GalleryImage {
+        width: 300px;
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+}
