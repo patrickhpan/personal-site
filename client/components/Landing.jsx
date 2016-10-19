@@ -9,7 +9,7 @@ class Landing extends React.Component {
         return <div id="Landing">
             <About id="About" limit={true} />
             <Projects id="Projects" limit={true} />
-            <BlogList id="Blog" limit={true} /> 
+            <BlogList id="Blog" limit={true} />
         </div>
     }
 }

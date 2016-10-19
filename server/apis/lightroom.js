@@ -9,7 +9,7 @@ const LIGHTROOM_ALBUM = process.env.LIGHTROOM_ALBUM;
 function createLightroomURL(values) {
     let url = 'https://lightroom.adobe.com/v2c';
     values.forEach(value => {
-        if(typeof value === 'object') {
+        if (typeof value === 'object') {
             url += `/${value.key}/${value.value}`;
         } else {
             url += `/${value}`;
@@ -24,43 +24,18 @@ function parseResponse(data) {
     return JSON.parse(data[0]);
 }
 
-function getImages() {
-    let url = createLightroomURL([
-        {
-            key: 'spaces',
-            value: LIGHTROOM_SPACE
-        }, {
-            key: 'albums',
-            value: LIGHTROOM_ALBUM
-        }, 
-        'assets?subtype=image' 
-    ]);
-
-    return request({
-        url: url
-    })
-        .then(parseResponse)
-        .then(data => {
-            let ids = data.resources.map(x => x.links.self.href.replace(/^.+\//,''));
-            return ids.map(getAssets);
-        });
-}
-
 function getAssets(id) {
-    let url = createLightroomURL([
-        {
-            key: 'spaces',
-            value: LIGHTROOM_SPACE
-        },
-        {
-            key: 'assets',
-            value: id
-        }
-    ])
+    let url = createLightroomURL([{
+        key: 'spaces',
+        value: LIGHTROOM_SPACE
+    }, {
+        key: 'assets',
+        value: id
+    }])
 
     return request({
-        url: url
-    })
+            url: url
+        })
         .then(parseResponse)
         .then(data => {
             let links = data.links;
@@ -72,6 +47,30 @@ function getAssets(id) {
         });
 }
 
+function getImages(album = LIGHTROOM_ALBUM) {
+    let cacheKey = `lightroom#album#${album}`;
+    
+    let url = createLightroomURL([{
+            key: 'spaces',
+            value: LIGHTROOM_SPACE
+        }, {
+            key: 'albums',
+            value: album
+        },
+        'assets?subtype=image'
+    ]);
+
+    return request({
+            url: url
+        })
+        .then(parseResponse)
+        .then(data => {
+            let ids = data.resources.map(x => x.links.self.href.replace(/^.+\//, ''));
+            return Promise.all(ids.map(getAssets));
+        });
+}
+
 module.exports = {
-    getImages
+    getImages,
+    getAssets
 }
