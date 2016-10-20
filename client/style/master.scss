@@ -149,6 +149,7 @@ div#App {
             @include flex($flex-direction: row, $justify-content: flex-start);
             flex-wrap: wrap;
             width: 100%;
+            margin-bottom: $gallery-margin-bottom;
             .GalleryImage {
                 @include columns();
 
