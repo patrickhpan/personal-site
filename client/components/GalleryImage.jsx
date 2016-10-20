@@ -3,10 +3,6 @@ import React from 'react';
 class GalleryImage extends React.Component {
     render() {
         let src = this.props.src;
-        let onClick = () => {
-            this.props.onClick();
-        }
-
         let style = {
             backgroundImage: `url(${src})`
         }
@@ -14,6 +10,7 @@ class GalleryImage extends React.Component {
         return <div 
             className="GalleryImage"
             style={style}
+            onClick={this.props.onClick}
         />
     }
 }
