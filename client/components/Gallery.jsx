@@ -22,13 +22,11 @@ class Gallery extends React.Component {
             })
     }
     renderImage(item, index) {
-        console.log(this)
-        let onClick = function () {
-            console.log(this)
+        let onClick = () => {
             this.setState({
                 openIndex: index
             })
-        }.bind(this)
+        }
         return <GalleryImage src={item.thumbnail} onClick={onClick}/>
     }
     openLightbox(index) {
@@ -42,20 +40,18 @@ class Gallery extends React.Component {
         })
     }
     render() {
-        let thumbnails = keyify(this.state.content.map(this.renderImage.bind(this)));
+        let renderImage = this.renderImage.bind(this)
+        let thumbnails = keyify(this.state.content.map(renderImage));
         let lightbox = this.state.openIndex !== -1 ? 
             <Lightbox
                 mainSrc={this.state.content[this.state.openIndex].full}
                 onCloseRequest={this.closeLightbox.bind(this)}
             /> :
             null
-        return <div className="Portfolio">
-            <h2>Photography</h2>
-            <div className="gallery-container">
-                {thumbnails}
-            </div>          
+        return <div className="gallery-container">
+            {thumbnails} 
             { lightbox }
-        </div>
+        </div>          
     }
 }
 

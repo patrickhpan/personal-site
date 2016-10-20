@@ -5,6 +5,7 @@ import flatten from 'array-flatten';
 
 import keyify from '../js/keyify';
 import images from '../img/_images';
+import defaultFooter from '../json/SectionFooter.json'
 
 class Content extends React.Component {
     render() {
@@ -22,10 +23,7 @@ class Content extends React.Component {
         } else if (!isNaN(limit)) {
             content = [...content.slice(0, limit), footer]
         } else {
-            content = [...content, {
-                md: "**Back** to home.",
-                link: "/"
-            }]
+            content = [...content, defaultFooter]
         }
         let renderedContent = renderContent(content);
         let href = `/${id}`

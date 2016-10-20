@@ -1,0 +1,8 @@
+{
+    "header": "Photography",
+    "footer": {
+        "md": "**View** more of my photos.",
+        "link": "/photography"
+    },
+    "defaultLength": 12
+}

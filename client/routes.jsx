@@ -6,6 +6,7 @@ import Landing from './components/Landing';
 import { About, Projects } from './components/SimpleContent'
 import BlogList from './components/BlogList';
 import BlogPost from './components/BlogPost';
+import Photography from './components/Photography';
 
 let routes = <Route path="/" component={App}>
     <IndexRoute component={Landing} />
@@ -13,6 +14,7 @@ let routes = <Route path="/" component={App}>
     <Route path="/projects" component={Projects} />
     <Route path="/blog" component={BlogList} />
     <Route path="/blog/:slug" component={BlogPost} />
+    <Route path="/photography" component={Photography} />
 </Route>
 
 export default routes;
