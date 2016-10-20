@@ -13,3 +13,10 @@
     align-items: $align-items;
     justify-content: $justify-content;
 }
+
+@mixin columns($columns: 3, $margin: 10px) {
+    $size: calc(100% / #{$columns} - #{$margin});
+    width: $size;
+    padding-bottom: $size;
+    margin: $margin / 2; 
+}
