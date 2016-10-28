@@ -1,16 +1,26 @@
 import React from 'react';
 
+const CASCADE_TIME = 150;
+let loadedOnce = false;
+
 class GalleryImage extends React.Component {
     constructor() {
         super();
         this.state = {
-            loaded: false
+            loaded: loadedOnce
         }
     }
     onImageLoad() {
-        this.setState({
-            loaded: true
-        })
+        let randomDelay = loadedOnce ?
+            0 :
+            Math.random() * CASCADE_TIME;
+        setTimeout(() => {
+            this.setState({
+                loaded: true
+            }, () => {
+                loadedOnce = true;
+            })
+        }, randomDelay);
     }
     render() {
         let src = this.props.src;        
