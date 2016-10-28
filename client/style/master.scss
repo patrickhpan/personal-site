@@ -98,12 +98,19 @@ div#App {
                     padding-right: $content-padding-side;
                     border-left: $content-border-width solid transparent;
 
-                    text-align: $p-text-align;
                     font-size: $p-font-size;
                     &, 
                     & > * {
                         line-height: $p-line-height;
                     }
+
+                    text-align: justify;
+                    @media screen and (max-width: 720px) {
+                        & {
+                            text-align: left;
+                        }
+                    }
+
                 }
 
                 > ul, 
