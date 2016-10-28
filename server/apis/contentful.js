@@ -11,16 +11,19 @@ function createConnection() {
 }
 
 function getNewestEntries(contentType, options) {
-    if(!contentType) {
+    if (!contentType) {
         console.error('No content type specified.')
     }
 
-    let { limit, skip } = options;
+    let {
+        limit,
+        skip
+    } = options;
     let defaultLimit = 10,
         defaultSkip = 0;
     limit = limit || defaultLimit;
     skip = skip || defaultSkip;
-    
+
     let cacheKey = `contentful#${contentType}#newest#${limit}#${skip}`;
     return cache.get(cacheKey, undefined)
         .then(value => {
@@ -35,7 +38,7 @@ function getNewestEntries(contentType, options) {
             }).then(entries => {
                 cache.set(cacheKey, entries);
                 return entries;
-            })     
+            })
         })
         .catch(err => {
             console.error(err)
@@ -54,13 +57,13 @@ function getNewestEntries(contentType, options) {
 function getEntryBySlug(contentType, slug) {
     let cacheKey = `contentful#${contentType}#entry#${slug}`
 
-    return cache.get(cacheKey)    
+    return cache.get(cacheKey)
         .then(value => {
             if (value !== undefined) {
                 return value;
-            } 
+            }
             return connection.getEntries({
-                content_type: contentType, 
+                content_type: contentType,
                 "fields.slug": slug
             }).then(entry => {
                 cache.set(cacheKey, entry);
@@ -70,7 +73,7 @@ function getEntryBySlug(contentType, slug) {
         .catch(err => {
             console.error(err)
             connection.getEntries({
-                content_type: contentType, 
+                content_type: contentType,
                 "fields.slug": slug
             }).then(entry => {
                 cache.set(cacheKey, entry);

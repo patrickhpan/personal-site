@@ -58,7 +58,7 @@ function getAssets(id) {
 
 function getImages(album = LIGHTROOM_ALBUM) {
     let cacheKey = `lightroom#album#${album}`;
-    
+
     let url = createLightroomURL([{
             key: 'spaces',
             value: LIGHTROOM_SPACE
@@ -69,14 +69,38 @@ function getImages(album = LIGHTROOM_ALBUM) {
         'assets?subtype=image'
     ]);
 
-    return request({
-            url: url
+    return cache.get(cacheKey, undefined)
+        .then(value => {
+            if (value !== undefined) {
+                return value;
+            }
+            return request({
+                    url: url
+                })
+                .then(parseResponse)
+                .then(data => {
+                    let ids = data.resources.map(x => x.links.self.href.replace(/^.+\//, ''));
+                    return Promise.all(ids.map(getAssets));
+                }).then(data => {
+                    cache.set(cacheKey, data)
+                    return data;
+                });
         })
-        .then(parseResponse)
-        .then(data => {
-            let ids = data.resources.map(x => x.links.self.href.replace(/^.+\//, ''));
-            return Promise.all(ids.map(getAssets));
-        });
+        .catch(err => {
+            console.error(err)
+            return request({
+                    url: url
+                })
+                .then(parseResponse)
+                .then(data => {
+                    let ids = data.resources.map(x => x.links.self.href.replace(/^.+\//, ''));
+                    return Promise.all(ids.map(getAssets));
+                }).then(data => {
+                    cache.set(cacheKey, data)
+                    return data;
+                });
+        })
+
 }
 
 module.exports = {
