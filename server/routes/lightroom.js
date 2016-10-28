@@ -13,4 +13,14 @@ router.get('/images', (req, res) => {
         })
 })
 
+router.get('/images/clear', (req, res) => {
+    lightroom.clearCache()
+        .then(() => {
+            res.end("cleared")
+        })
+        .catch(err => {
+            res.json(err)
+        });
+})
+
 module.exports = router

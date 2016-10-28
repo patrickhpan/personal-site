@@ -100,10 +100,15 @@ function getImages(album = LIGHTROOM_ALBUM) {
                     return data;
                 });
         })
+}
 
+function clearCache(album = LIGHTROOM_ALBUM) {
+    let cacheKey = `lightroom#album#${album}`;
+    return cache.remove(cacheKey)
 }
 
 module.exports = {
     getImages,
-    getAssets
+    getAssets,
+    clearCache
 }
