@@ -157,12 +157,25 @@ div#App {
                     @include columns($columns: 2);
                 }
 
-                background-size: cover;
-                background-position: center;
                 cursor: pointer;
 
-                &.loading {
-                    background: rgba(0, 0, 0, 0.2);
+                background-color: $gallery-image-placeholder-color;
+
+                div.image {
+                    width: 100%;
+                    height: 100%;
+                    padding-bottom: 100%;
+                    transition: opacity $gallery-image-fade;
+
+                    background-size: cover;
+                    background-position: center;
+
+                    &.loading {
+                        opacity: 0;
+                    }
+                    &.loaded {
+                        opacity: 1;
+                    }
                 }
             }
         }

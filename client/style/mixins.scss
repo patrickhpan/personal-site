@@ -17,6 +17,5 @@
 @mixin columns($columns: 3, $margin: 0.6em) {
     $size: calc(100% / #{$columns} - #{$margin});
     width: $size;
-    padding-bottom: $size;
     margin: $margin / 2; 
 }
