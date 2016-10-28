@@ -8,8 +8,10 @@ import { getImages } from '../js/lightroom';
 class Gallery extends React.Component { 
     constructor() {
         super();
+        let empty = {}
+        let placeholder = Array.from(new Array(12)).map(x => empty)
         this.state = {
-            content: [],
+            content: placeholder,
             openIndex: -1
         };
     }

@@ -160,6 +160,10 @@ div#App {
                 background-size: cover;
                 background-position: center;
                 cursor: pointer;
+
+                &.loading {
+                    background: rgba(0, 0, 0, 0.2);
+                }
             }
         }
     }
