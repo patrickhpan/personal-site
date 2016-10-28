@@ -1,19 +1,26 @@
 import React from 'react';
 
 const CASCADE_TIME = 150;
+const LOAD_THRESHOLD = 100;
 let loadedOnce = false;
 
 class GalleryImage extends React.Component {
     constructor() {
         super();
+        this.initDate = +new Date();
         this.state = {
             loaded: loadedOnce
         }
     }
     onImageLoad() {
-        let randomDelay = loadedOnce ?
-            0 :
-            Math.random() * CASCADE_TIME;
+        let randomDelay = 0;
+        if (!loadedOnce && (+new Date() - this.initDate < LOAD_THRESHOLD)) {
+            // Image has been loaded before, initiate random cascade
+            randomDelay = Math.random() * CASCADE_TIME
+        } else {
+            // Image has not been loaded before, should cascade
+            console.log("Loaded first time")
+        }
         setTimeout(() => {
             this.setState({
                 loaded: true
