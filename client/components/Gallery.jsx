@@ -29,7 +29,7 @@ class Gallery extends React.Component {
                 openIndex: index
             })
         }
-        return <GalleryImage src={item.thumbnail} onClick={onClick}/>
+        return <GalleryImage src={item.small} onClick={onClick}/>
     }
     openLightbox(index) {
         this.setState({
