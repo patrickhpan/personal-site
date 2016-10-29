@@ -42,7 +42,6 @@ class BlogPost extends React.Component {
         return {
             title: post.fields.title,
             markdowns: splitBody.map(item => { 
-                console.log(marked(item));
                 return {
                     __html: marked(item)
                 };

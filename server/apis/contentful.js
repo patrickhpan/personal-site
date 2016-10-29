@@ -72,14 +72,14 @@ function getEntryBySlug(contentType, slug) {
         })
         .catch(err => {
             console.error(err)
-            connection.getEntries({
+            return connection.getEntries({
                 content_type: contentType,
                 "fields.slug": slug
             }).then(entry => {
                 cache.set(cacheKey, entry);
                 return entry;
             }).catch(contentfulError => {
-                return c
+                return contentfulError
             })
         })
 }

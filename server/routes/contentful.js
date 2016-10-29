@@ -11,7 +11,7 @@ router.get('/posts/newest', (req, res) => {
         res.json(data)
     }).catch(err => {
         if (err instanceof Error) {
-            console.log(err)
+            console.error(err)
         }
         res.json(err)
     })
@@ -25,7 +25,7 @@ router.get('/posts/:slug', (req, res) => {
         res.json(data)
     }).catch(err => {
         if (err instanceof Error) {
-            console.log(err)
+            console.error(err)
         }
         res.json(err)
     })
