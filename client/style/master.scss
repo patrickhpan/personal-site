@@ -88,14 +88,18 @@ div#App {
             width: 100%;
 
             .content-md {
-                display: flex;
+                @include flex;
                 width: 100%;
 
                 &:not(:last-child) {
                     margin-bottom: $content-under;
                 }
+
+                h1, h2, h3, h4, h5, h6 {
+                    text-align: center;
+                }
             
-                > p, li {
+                > p, > li {
                     font-size: $p-font-size;
                 }
                 
