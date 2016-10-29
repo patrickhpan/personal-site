@@ -72,7 +72,7 @@ div#App {
             margin-bottom: $portfolio-under;
         }
 
-        h2 {
+        h2.title {
             margin-bottom: $portfolio-header-under;
 
             font-size: $portfolio-header-size;
@@ -89,20 +89,28 @@ div#App {
 
             .content-md {
                 display: flex;
+                width: 100%;
+
                 &:not(:last-child) {
                     margin-bottom: $content-under;
                 }
             
+                > p, li {
+                    font-size: $p-font-size;
+                }
+                
+                > ul, 
+                > ol {
+                    margin-left: $content-list-margin-left;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+
                 > * {
+                    width: 100%;
                     padding-left: $content-padding-side;
                     padding-right: $content-padding-side;
                     border-left: $content-border-width solid transparent;
-
-                    font-size: $p-font-size;
-                    &, 
-                    & > * {
-                        line-height: $p-line-height;
-                    }
 
                     text-align: justify;
                     @media screen and (max-width: 720px) {
@@ -111,13 +119,10 @@ div#App {
                         }
                     }
 
-                }
-
-                > ul, 
-                > ol {
-                    margin-left: $content-list-margin-left;
-                    margin-top: 0;
-                    margin-bottom: 0;
+                    &, 
+                    & > * {
+                        line-height: $p-line-height;
+                    }
                 }
                 
                 &:not(div) {

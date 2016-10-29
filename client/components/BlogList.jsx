@@ -20,8 +20,7 @@ class BlogList extends React.Component {
             })
     }
     processBlogPost(post) {
-        let { title, blurb } = post.fields;
-        let slug = title.split(" ").slice(0, 6).join("-").toLowerCase();
+        let { title, blurb, slug } = post.fields;
         return {
             md: `**${title}**: ${blurb}`,
             link: `/blog/${slug}`

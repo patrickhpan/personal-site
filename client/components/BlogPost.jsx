@@ -15,6 +15,7 @@ class BlogPost extends React.Component {
             post: null
         }
     }
+
     componentDidMount() {
         if(!this.props.params || !this.props.params.slug) {
             return;
@@ -28,6 +29,7 @@ class BlogPost extends React.Component {
                 })
             });
     }
+
     formatPost(post) {
         if(post === undefined) {
             return {
@@ -39,19 +41,24 @@ class BlogPost extends React.Component {
 
         return {
             title: post.fields.title,
-            markdowns: splitBody.map(item => { return {
-                __html: marked(item)
-            }})
+            markdowns: splitBody.map(item => { 
+                console.log(marked(item));
+                return {
+                    __html: marked(item)
+                };
+            })
         }
     }
+
     renderTags(tags) {
+        let spanComma = <span>, </span>;
         let createdTags = keyify(flatten(tags.map((tag, i) => {
             let urlTag = tag.replace(/\s+/g, '-');
             return [
                 <Link className="tag" to={`/blog/tag/${urlTag}`}>
                     {tag}
                 </Link>,
-                <span>, </span>
+                spanComma
             ]
         })));
         createdTags.pop();
@@ -59,6 +66,7 @@ class BlogPost extends React.Component {
             <p>Tags: {createdTags}</p> 
         </div>
     }
+    
     render() {
         if(!this.state.post) {
             return null;
@@ -74,7 +82,7 @@ class BlogPost extends React.Component {
         let renderedFooter = keyify(renderItem(footer));
 
         return <div className="BlogPost"> 
-            <h2>{title}</h2>
+            <h2 className="title">{title}</h2>
             <div className="content-container">
                 {content}
                 {renderedTags}
