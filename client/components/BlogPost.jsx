@@ -41,9 +41,14 @@ class BlogPost extends React.Component {
 
         return {
             title: post.fields.title,
-            markdowns: splitBody.map(item => { 
+            items: splitBody.map(item => { 
+                let md = marked(item);
+                let isLink = !!(md.match(/<a /))
                 return {
-                    __html: marked(item)
+                    markdown: {
+                        __html: md
+                    },
+                    isLink: !!(md.match(/<a /))
                 };
             })
         }
@@ -71,10 +76,14 @@ class BlogPost extends React.Component {
             return null;
         }
 
-        let { title, markdowns } = this.formatPost(this.state.post);
+        let { title, items } = this.formatPost(this.state.post);
 
-        let content = keyify(markdowns.map(md =>
-            <div className="content-md" dangerouslySetInnerHTML={md} />
+        let content = keyify(items.map(item => {
+                if(item.isLink) {
+                    return <a className="content-md" dangerouslySetInnerHTML={item.markdown} />
+                }
+                return <div className="content-md" dangerouslySetInnerHTML={item.markdown} />
+            }
         ));
 
         let renderedTags = this.renderTags(this.state.post.fields.tags);        
