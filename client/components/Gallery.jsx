@@ -44,6 +44,10 @@ class Gallery extends React.Component {
     render() {
         let renderImage = this.renderImage.bind(this)
         let thumbnails = keyify(this.state.content.map(renderImage));
+        let limit = this.props.limit;
+        if (limit !== undefined) {
+            thumbnails = thumbnails.slice(0, limit);
+        }
         let lightbox = this.state.openIndex !== -1 ? 
             <Lightbox
                 mainSrc={this.state.content[this.state.openIndex].full}

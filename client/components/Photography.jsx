@@ -21,8 +21,8 @@ class Photography extends React.Component {
 
         let renderedFooter = renderContent([footer]); 
         return <div className="Portfolio">
-            <h2>{header}</h2>
-            <Gallery />
+            <h2 className="title">{header}</h2>
+            <Gallery limit={limit}/>
             {renderedFooter}
         </div>
     }
