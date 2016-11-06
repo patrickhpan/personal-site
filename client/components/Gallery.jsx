@@ -41,6 +41,16 @@ class Gallery extends React.Component {
             openIndex: -1
         })
     }
+    moveNext() {
+        this.setState({
+            openIndex: (this.state.openIndex + 1) % (this.state.content.length)
+        })
+    }
+    movePrev() {
+        this.setState({
+            openIndex: (this.state.openIndex - 1) % (this.state.content.length)
+        })
+    }
     render() {
         let renderImage = this.renderImage.bind(this)
         let thumbnails = keyify(this.state.content.map(renderImage));
@@ -51,7 +61,11 @@ class Gallery extends React.Component {
         let lightbox = this.state.openIndex !== -1 ? 
             <Lightbox
                 mainSrc={this.state.content[this.state.openIndex].full}
+                nextSrc={this.state.content[(this.state.openIndex + 1) % this.state.content.length].full}
+                prevSrc={this.state.content[(this.state.openIndex + this.state.content.length - 1) % this.state.content.length].full}
                 onCloseRequest={this.closeLightbox.bind(this)}
+                onMoveNextRequest={this.moveNext.bind(this)}
+                onMovePrevRequest={this.movePrev.bind(this)}
             /> :
             null
         return <div className="gallery-container">
