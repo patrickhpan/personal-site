@@ -3,7 +3,8 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
 import Landing from './components/Landing';
-import { About, Projects } from './components/SimpleContent'
+import { About } from './components/SimpleContent'
+import Projects from './components/Projects';
 import BlogList from './components/BlogList';
 import BlogPost from './components/BlogPost';
 import Photography from './components/Photography';

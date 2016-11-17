@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import { About, Projects } from './SimpleContent';
+import { About } from './SimpleContent';
+import Projects from './Projects';
 import BlogList from './BlogList';
 import Photography from './Photography';
 

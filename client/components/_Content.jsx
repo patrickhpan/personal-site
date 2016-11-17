@@ -29,8 +29,7 @@ class Content extends React.Component {
             footer = defaultFooter
         }
         
-        content.push(footer);
-        let renderedContent = renderContent(content);
+        let renderedContent = renderContent([...content, footer]);
 
         let href = `/${id}`
 

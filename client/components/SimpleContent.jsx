@@ -9,12 +9,12 @@ const About = (props) => <Content
     data={aboutContent} 
 />
 
-const Projects = (props) => <Content  
-    {...props}
-    data={projectsContent}
-/>
+// const Projects = (props) => <Content  
+//     {...props}
+//     data={projectsContent}
+// />
 
 export {
     About,
-    Projects
+    // Projects
 };

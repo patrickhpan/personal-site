@@ -2,9 +2,9 @@ import React from 'react';
 import Content from './_Content';
 
 import { getNewestEntries } from '../js/contentful';
-import staticContent from '../json/BlogList.json';
+import staticContent from '../json/Projects.json';
 
-class BlogList extends React.Component {
+class Projects extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -15,10 +15,7 @@ class BlogList extends React.Component {
         getNewestEntries('blog-post')
             .then(data => {
                 let items = data.items;
-                let limit = this.props.limit;
-                if (limit === true || !isNaN(limit)) {
-                    items = items.filter(item => !item.fields.isProject)
-                }
+                items = items.filter(item => item.fields.isProject === true)
                 return items;
             })
             .then(items => {
@@ -47,4 +44,4 @@ class BlogList extends React.Component {
     }
 }
 
-export default BlogList
+export default Projects
