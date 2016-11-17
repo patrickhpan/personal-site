@@ -8,8 +8,8 @@ $header-mobile-name-size: 4em;
 $under-name-size: 1.3em;
 $under-name-weight: 400;
 $under-name-between: 3em;
-$under-name-padding: 4px;
-$under-name-border-width: 3px;
+$under-name-padding: .2em;
+$under-name-border-width: 0.16em;
 $under-name-border-color: $off-black;
 $under-name-fade: 0.35s;
 
@@ -18,16 +18,18 @@ $portfolio-mobile-header-size: 2.2em;
 $portfolio-header-under: 3em * (1em / $portfolio-header-size);
 $portfolio-under: 3.5em;
 
-$content-padding-side: 7px;
-$content-border-width: 4px;
+$content-padding-side: 0.6em;
+$content-border-width: 0.25em;
 $content-border-start-color: rgba($off-black, 0.1);
 $content-border-end-color: $off-black; 
 $content-list-margin-left: 2em;
 
+$content-heading-margin: 0.6em;
+
 $content-img-margin: 2em;
 $content-img-max-width: 30em;
 
-$content-border-fade: 0.4s;
+$content-border-fade: 0.45s;
 $content-under: 1.5em;
 
 $tag-border-width: $under-name-border-width;
@@ -35,8 +37,21 @@ $tag-border-start-color: $content-border-start-color;
 $tag-border-end-color: $content-border-end-color;
 $tag-border-fade: $under-name-fade;
 
-$p-font-size: 1.21em;
-$p-line-height: 1.13 * $p-font-size;
+$p-font-size: 1.24em;
+$p-line-height: 1.2 * $p-font-size;
+
+$p-a-border-padding: 0.06em;
+$p-a-border-width: 0.12em;
+$p-a-border-start-color: $content-border-start-color;
+$p-a-border-end-color: $content-border-end-color;
+$p-a-border-fade: $under-name-fade;
+
+$bq-color: rgba($off-black, 0.8);
+$bq-font-size: $p-font-size * 1.15;
+$bq-font-style: italic;
+$bq-padding-side: $content-padding-side;
+$bq-border-width: $content-border-width;
+$bq-border-color: $content-border-start-color;
 
 $blog-header-size: 3em;
 $blog-mobile-header-size: 2.2em;

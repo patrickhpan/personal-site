@@ -9,23 +9,29 @@ import defaultFooter from '../json/SectionFooter.json'
 
 class Content extends React.Component {
     render() {
-        let limit = this.props.limit;
-        let id = this.props.id;
-
+        // get the limit of markdown items and the link from props
+        let { limit, id } = this.props;
+        // get the default content
         let { header, content, footer, defaultLength } = this.props.data;
         
-        if(limit === true) {
-            if(defaultLength !== undefined) {
-                content = [...content.slice(0, defaultLength), footer]
-            } else {
-                content = [...content, footer]
+        if (limit === true) {
+            // if trying to use default limit
+            if (!isNaN(defaultLength)) {
+                // if there is a default limit, use it
+                content = content.slice(0, defaultLength)
             }
         } else if (!isNaN(limit)) {
-            content = [...content.slice(0, limit), footer]
+            // if the limit is a number, use it
+            content = content.slice(0, limit)
         } else {
-            content = [...content, defaultFooter]
+            // if there is no limit, then we are not on the homepage
+            // replace the footer with a "back to home" link
+            footer = defaultFooter
         }
+        
+        content.push(footer);
         let renderedContent = renderContent(content);
+
         let href = `/${id}`
 
         return <div id={id} className="Portfolio">
@@ -38,16 +44,16 @@ class Content extends React.Component {
 }
 
 function renderItem(item) {
-    let md = item.md;
-    let img = item.img;
-    let link = item.link;
+    let { md, img, link } = item;
 
+    // dangerouslySetInnerHTML object    
     let renderedMD = {
         __html: marked(md)
     };
 
     let toReturn = [];
 
+    // if there is an image, render it before the content    
     if(img) {
         toReturn.push(<img
             className="content-img"
@@ -55,21 +61,24 @@ function renderItem(item) {
         />)
     }
 
-    if(link) {
-        if(/^h/.test(link)) {
-            toReturn.push(<a 
-                href={link}
-                className="content-md"
-                dangerouslySetInnerHTML={renderedMD}
-            />);
-        } else {
+    if (link) {
+        if (/^\//.test(link)) {
+            // if there is a relative link, use a react-router Link
             toReturn.push(<Link 
                 to={link}
                 className="content-md"
                 dangerouslySetInnerHTML={renderedMD}
             />);
+        } else {
+            // if there is an absolute link, use a regular <a>
+            toReturn.push(<a 
+                href={link}
+                className="content-md"
+                dangerouslySetInnerHTML={renderedMD}
+            />);
         }
     } else {
+        // if there is no link, use a regular div
         toReturn.push(<div
             className="content-md" 
             dangerouslySetInnerHTML={renderedMD}
@@ -90,8 +99,6 @@ function renderContent(content, wrap = true) {
     }
     return renderedItems;
 }
-
-
 
 export default Content;
 export { renderContent, renderItem }

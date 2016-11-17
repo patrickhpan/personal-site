@@ -45,10 +45,10 @@ class BlogPost extends React.Component {
                 let md = marked(item);
                 let isLink = !!(md.match(/<a /))
                 return {
-                    markdown: {
+                    // markdown: {
                         __html: md
-                    },
-                    isLink: !!(md.match(/<a /))
+                    // },
+                    // isLink: !!(md.match(/<a /))
                 };
             })
         }
@@ -63,7 +63,7 @@ class BlogPost extends React.Component {
                 </Link>
         })
         let createdTags = keyify(flatten(tagLinks.map(tag => [
-            link,
+            tag,
             spanComma
         ])));
         if (createdTags.length > 1) {
@@ -82,10 +82,10 @@ class BlogPost extends React.Component {
         let { title, items } = this.formatPost(this.state.post);
 
         let content = keyify(items.map(item => {
-                if(item.isLink) {
-                    return <a className="content-md" dangerouslySetInnerHTML={item.markdown} />
-                }
-                return <div className="content-md" dangerouslySetInnerHTML={item.markdown} />
+                // if(item.isLink) {
+                //     return <a className="content-md" dangerouslySetInnerHTML={item.markdown} />
+                // }
+                return <div className="content-md" dangerouslySetInnerHTML={item} />
             }
         ));
 

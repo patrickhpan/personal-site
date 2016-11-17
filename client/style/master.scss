@@ -97,10 +97,33 @@ div#App {
 
                 h1, h2, h3, h4, h5, h6 {
                     text-align: center;
+                    margin-top: $content-heading-margin;
+                    margin-bottom: $content-heading-margin;
                 }
-            
+
+                a {
+                    /*text-decoration: underline;    */
+                    /*border-bottom: 1px solid green;*/
+                    padding-bottom: $p-a-border-padding;
+                    border-bottom: $p-a-border-width solid $p-a-border-start-color;
+                    transition: $p-a-border-fade border-bottom;
+                    &:hover {
+                        border-bottom: $p-a-border-width solid $p-a-border-end-color;
+                    }
+                }
+
                 > p, > li {
                     font-size: $p-font-size;
+                }
+                
+                > blockquote > p {
+                    &, & > * {
+                        color: $bq-color;    
+                    }
+                    padding-left: $bq-padding-side;
+                    border-left: $bq-border-width solid $bq-border-color;
+                    font-size: $bq-font-size;
+                    font-style: $bq-font-style;
                 }
                 
                 > ul, 
@@ -116,7 +139,7 @@ div#App {
                     padding-right: $content-padding-side;
                     border-left: $content-border-width solid transparent;
 
-                    text-align: justify;
+                    text-align: left;
                     @media screen and (max-width: 720px) {
                         & {
                             text-align: left;
