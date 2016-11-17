@@ -1,13 +1,28 @@
 import request from 'request-promise';
 import resolveUrl from './resolveUrl'
 
+let newestEntriesCache = {};
+let entryBySlugCache = {};
+
 function getNewestEntries(options) {
-    let { limit, skip } = options;
-    let qp = { limit, skip };
-    return request({
-        url: resolveUrl('/blog/posts/newest'),
-        qp: qp
-    }).then(body => JSON.parse(body));
+    let key = JSON.stringify(options);
+    if (newestEntriesCache[key] === undefined) {
+        let { limit, skip } = options;
+        let qp = { limit, skip };
+        return request({
+            url: resolveUrl('/blog/posts/newest'),
+            qp: qp
+        })
+            .then(JSON.parse)
+            .then(body => {
+                newestEntriesCache[key] = body;
+                return body;
+            });
+    } else {
+        return new Promise(resolve => {
+            resolve(newestEntriesCache[key])
+        });
+    }
 }
 
 function getEntryBySlug(slug) {
