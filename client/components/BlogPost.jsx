@@ -56,16 +56,19 @@ class BlogPost extends React.Component {
 
     renderTags(tags) {
         let spanComma = <span>, </span>;
-        let createdTags = keyify(flatten(tags.map((tag, i) => {
+        let tagLinks = tags.map((tag, i) => {
             let urlTag = tag.replace(/\s+/g, '-');
-            return [
-                <Link className="tag" to={`/blog/tag/${urlTag}`}>
+            return <Link className="tag" to={`/blog/tag/${urlTag}`}>
                     {tag}
-                </Link>,
-                spanComma
-            ]
-        })));
-        createdTags.pop();
+                </Link>
+        })
+        let createdTags = keyify(flatten(tagLinks.map(tag => [
+            link,
+            spanComma
+        ])));
+        if (createdTags.length > 1) {
+            createdTags.pop();   
+        }
         return <div className="tags content-md">
             <p>Tags: {createdTags}</p> 
         </div>
