@@ -27,18 +27,27 @@ class GalleryImage extends React.Component {
         }, randomDelay);
     }
     render() {
+        // get image source from props
         let src = this.props.src;        
 
+        // the image will have classes image and one other        
         let classList = ['image'];
         let style;
         if (src && this.state.loaded) {
+            // if the source exists and the image has been loaded before,
+            // apply the image source and show it
             style = {
                 backgroundImage: `url(${src})`
             };
             classList.push('loaded');
         } else {
+            // if the source does not exist, or the image has not been loaded before,
+            // trigger a cascade
             classList.push('loading')
         }
+
+        let caption = this.props.caption;
+        let captionDiv = <div className='image-caption'>{caption}</div>;
          
         let img = <div
             className={classList.join(' ')}
@@ -55,6 +64,7 @@ class GalleryImage extends React.Component {
             /> :
             null;
 
+        
 
         return <div 
             className='GalleryImage'
@@ -62,6 +72,7 @@ class GalleryImage extends React.Component {
         >
             {loader}
             {img}
+            {captionDiv}
         </div>    
     }
 }

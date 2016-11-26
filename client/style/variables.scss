@@ -60,3 +60,8 @@ $blog-header-under: 3em * (1em / $portfolio-header-size);
 $gallery-margin-bottom: 1em;
 $gallery-image-fade: 0.6s;
 $gallery-image-placeholder-color: #eeedea;
+$image-caption-color: $off-white;
+$image-caption-size: 2em;
+$image-caption-fade: 0.3s;
+$image-caption-filter: brightness(50%);
+$image-caption-bg: rgba($black, 0.3);

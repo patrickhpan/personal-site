@@ -190,6 +190,8 @@ div#App {
             width: 100%;
             margin-bottom: $gallery-margin-bottom;
             .GalleryImage {
+                position: relative;
+
                 @include columns();
 
                 @media screen and (max-width: 720px) {
@@ -215,6 +217,35 @@ div#App {
                     &.loaded {
                         opacity: 1;
                     }
+                    /*&.has-caption {
+                        transition: filter $image-caption-fade;
+                        &:hover {
+                            filter: $image-caption-filter;
+                        }
+                    }*/
+                    
+                }
+
+                div.image-caption {
+                    position: absolute;
+                    @include hundop();
+                    @include flex();
+
+                    color: $image-caption-color;
+                    font-size: $image-caption-size;
+
+                    transition: background-color $image-caption-fade,
+                        opacity $image-caption-fade;
+
+                    opacity: 0;
+                    background-color: transparent;
+
+                    &:hover, &:active {
+                        opacity: 1;
+                        background-color: $image-caption-bg;
+                    }
+
+
                 }
             }
         }
