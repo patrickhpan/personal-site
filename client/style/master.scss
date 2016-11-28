@@ -91,6 +91,8 @@ div#App {
                 @include flex;
                 width: 100%;
 
+                font-size: $p-font-size;
+
                 &:not(:last-child) {
                     margin-bottom: $content-under;
                 }
@@ -102,8 +104,6 @@ div#App {
                 }
 
                 a {
-                    /*text-decoration: underline;    */
-                    /*border-bottom: 1px solid green;*/
                     padding-bottom: $p-a-border-padding;
                     border-bottom: $p-a-border-width solid $p-a-border-start-color;
                     transition: $p-a-border-fade border-bottom;
@@ -112,10 +112,6 @@ div#App {
                     }
                 }
 
-                p, li {
-                    font-size: $p-font-size;
-                }
-                
                 > blockquote > p {
                     &, & > * {
                         color: $bq-color;    
@@ -131,6 +127,10 @@ div#App {
                     margin-left: $content-list-margin-left;
                     margin-top: 0;
                     margin-bottom: 0;
+
+                    > li:not(:last-child) {
+                        margin-bottom: $content-list-item-margin;
+                    }
                 }
 
                 > * {
@@ -139,12 +139,12 @@ div#App {
                     padding-right: $content-padding-side;
                     border-left: $content-border-width solid transparent;
 
-                    text-align: justify;
-                    @media screen and (max-width: 720px) {
-                        & {
-                            text-align: left;
-                        }
-                    }
+                    // text-align: justify;
+                    // @media screen and (max-width: 720px) {
+                    //     & {
+                    //         text-align: left;
+                    //     }
+                    // }
 
                     &, 
                     & > * {
@@ -165,14 +165,14 @@ div#App {
                 }    
                 
             }
-            .content-img {
-                width: 100%;
-                margin: $content-img-margin;
-                margin-top: initial;
-                max-width: $content-img-max-width;
 
+            img {
+                width: 100%;
+                max-width: $content-img-max-width;
+                box-shadow: $content-img-box-shadow;
                 align-self: center;
             }
+
             .tags {
                 .tag {
                     font-style: italic;

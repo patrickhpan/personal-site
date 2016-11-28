@@ -22,12 +22,14 @@ $content-padding-side: 0.6em;
 $content-border-width: 0.25em;
 $content-border-start-color: rgba($off-black, 0.1);
 $content-border-end-color: $off-black; 
-$content-list-margin-left: 2em;
+$content-list-margin-left: 1.2em;
+$content-list-item-margin: 1em;
 
 $content-heading-margin: 0.6em;
 
+$content-img-max-width: 100%;
 $content-img-margin: 2em;
-$content-img-max-width: 30em;
+$content-img-box-shadow: 0 0 10px -4px $black;
 
 $content-border-fade: 0.45s;
 $content-under: 1.5em;
@@ -37,8 +39,8 @@ $tag-border-start-color: $content-border-start-color;
 $tag-border-end-color: $content-border-end-color;
 $tag-border-fade: $under-name-fade;
 
-$p-font-size: 1.24em;
-$p-line-height: 1.16 * $p-font-size;
+$p-font-size: 1.2em;
+$p-line-height: 1.3 * $p-font-size;
 
 $p-a-border-padding: 0.06em;
 $p-a-border-width: 0.12em;
