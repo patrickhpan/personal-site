@@ -1,11 +1,12 @@
-import Content from './Content';
+import React from 'react';
+import Content from './_Content';
 
-import content from '../json/Projects.json';
-import mePic from '../img/me.jpg';
+import content from '../json/About.json';
 
 const About = (props) => <Content 
-    content={content} 
     {...props}
+    data={content} 
+    elementId="About"
 />
 
-export default Projects
+export default About;

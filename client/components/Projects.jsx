@@ -39,7 +39,8 @@ class Projects extends React.Component {
 
         return <Content
             {...this.props}
-            data={data}  
+            data={data}
+            elementId="Projects"
         />
     }
 }

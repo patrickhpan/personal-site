@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Link from './_TopLink'
 import marked from 'marked';
 import flatten from 'array-flatten';
 
@@ -10,7 +10,7 @@ import defaultFooter from '../json/SectionFooter.json'
 class Content extends React.Component {
     render() {
         // get the limit of markdown items and the link from props
-        let { limit, id } = this.props;
+        let { limit, elementId } = this.props; 
         // get the default content
         let { header, content, footer, defaultLength } = this.props.data;
         
@@ -31,9 +31,9 @@ class Content extends React.Component {
         
         let renderedContent = renderContent([...content, footer]);
 
-        let href = `/${id}`
+        let href = `/${elementId.toLowerCase()}` 
 
-        return <div id={id} className="Portfolio">
+        return <div id={elementId} className="Portfolio">
             <Link to={href}>
                 <h2 className="title">{header}</h2>
             </Link>

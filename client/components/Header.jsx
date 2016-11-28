@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Link from './_TopLink';
 
 import keyify from '../js/keyify';
 import strings from '../json/Header.json';

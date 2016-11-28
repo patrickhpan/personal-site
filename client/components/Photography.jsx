@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from './_TopLink';
 
 import Gallery from './Gallery';
 import { renderContent } from './_Content';
@@ -21,7 +22,9 @@ class Photography extends React.Component {
 
         let renderedFooter = renderContent([footer]); 
         return <div className="Portfolio">
-            <h2 className="title">{header}</h2>
+            <h2 className="title">
+                <Link to="/photography">{header}</Link>
+            </h2>
             <Gallery limit={limit}/>
             {renderedFooter}
         </div>

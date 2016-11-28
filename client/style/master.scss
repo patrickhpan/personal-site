@@ -234,8 +234,8 @@ div#App {
                     color: $image-caption-color;
                     font-size: $image-caption-size;
 
-                    transition: background-color $image-caption-fade,
-                        opacity $image-caption-fade;
+                    transition: background-color $image-caption-fade-out,
+                        opacity $image-caption-fade-out;
 
                     opacity: 0;
                     background-color: transparent;
@@ -243,6 +243,9 @@ div#App {
                     &:hover, &:active {
                         opacity: 1;
                         background-color: $image-caption-bg;
+                        
+                        transition: background-color $image-caption-fade-in,
+                            opacity $image-caption-fade-in;
                     }
 
 

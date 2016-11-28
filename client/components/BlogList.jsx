@@ -43,6 +43,7 @@ class BlogList extends React.Component {
         return <Content
             {...this.props}
             data={data}  
+            elementId="Blog"
         />
     }
 }
