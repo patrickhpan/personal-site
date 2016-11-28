@@ -56,12 +56,12 @@ function getAssets(id) {
         }).catch(console.error);
 }
 
-function getImages(album = LIGHTROOM_ALBUM) {
+function getImages(space = LIGHTROOM_SPACE, album = LIGHTROOM_ALBUM) {
     let cacheKey = `lightroom#album#${album}`;
 
     let url = createLightroomURL([{
             key: 'spaces',
-            value: LIGHTROOM_SPACE
+            value: space
         }, {
             key: 'albums',
             value: album

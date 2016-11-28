@@ -3,15 +3,20 @@ const lightroom = require('../apis/lightroom');
 
 let router = express.Router();
 
-router.get('/images', (req, res) => {
-    lightroom.getImages()
+let getImages = (req, res) => {
+    let { space, album } = req.query;
+    let promise = ( space && album ) ? lightroom.getImages(space, album) : lightroom.getImages()
+    promise
         .then(data => {
             res.json(data);
         })
         .catch(err => {
             res.json(err);
         })
-})
+}
+
+router.get('/images/:album', getImages)
+router.get('/images/', getImages)
 
 router.get('/images/clear', (req, res) => {
     lightroom.clearCache()
