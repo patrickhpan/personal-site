@@ -14,7 +14,7 @@
     justify-content: $justify-content;
 }
 
-@mixin columns($columns: 3, $margin: 0.6em) {
+@mixin columns($columns: 5, $margin: 0.6em) {
     $size: calc(100% / #{$columns} - #{$margin});
     width: $size;
     margin: $margin / 2; 

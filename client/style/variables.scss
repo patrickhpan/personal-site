@@ -16,6 +16,7 @@ $under-name-fade: 0.35s;
 $portfolio-header-size: 3em;
 $portfolio-mobile-header-size: 2.2em;
 $portfolio-header-under: 3em * (1em / $portfolio-header-size);
+$portfolio-mobile-header-under: 3em * (1em / $portfolio-mobile-header-size);
 $portfolio-under: 3.5em;
 
 $content-padding-side: 0.6em;
@@ -40,7 +41,7 @@ $tag-border-end-color: $content-border-end-color;
 $tag-border-fade: $under-name-fade;
 
 $p-font-size: 1.2em;
-$p-line-height: calc(5/3);
+$p-line-height: 1.667;
 
 $p-a-border-padding: 0.06em;
 $p-a-border-width: 0.12em;

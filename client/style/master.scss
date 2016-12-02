@@ -28,6 +28,9 @@ div#App {
     
     div#Header {
         margin-bottom: $portfolio-under; 
+				@media screen and (max-width: 720px) {
+					margin-bottom: $portfolio-mobile-header-under;
+				}
         
         h1 {
             text-align: center;
@@ -50,6 +53,9 @@ div#App {
                 }
 
                 padding-bottom: $under-name-padding;
+
+
+
                 border-bottom: $under-name-border-width solid transparent;
                 transition: border-bottom $under-name-fade;
                 &:hover {
@@ -195,7 +201,7 @@ div#App {
                 @include columns();
 
                 @media screen and (max-width: 720px) {
-                    @include columns($columns: 2);
+                    @include columns($columns: 3);
                 }
 
                 cursor: pointer;
