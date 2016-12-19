@@ -198,7 +198,7 @@ div#App {
             .GalleryImage {
                 position: relative;
 
-                @include columns();
+                @include columns($columns: 5);
 
                 @media screen and (max-width: 720px) {
                     @include columns($columns: 3);
