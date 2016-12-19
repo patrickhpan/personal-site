@@ -18,7 +18,7 @@ let getImages = (req, res) => {
 router.get('/images/:album', getImages)
 router.get('/images/', getImages)
 
-router.get('/images/clear', (req, res) => {
+router.get('/clear', (req, res) => {
     lightroom.clearCache()
         .then(() => {
             res.end("cleared")
