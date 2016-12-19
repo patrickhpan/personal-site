@@ -8,6 +8,7 @@ let getImages = (req, res) => {
     let promise = ( space && album ) ? lightroom.getImages(space, album) : lightroom.getImages()
     promise
         .then(data => {
+	    data = data.filter(x => x !== null);
             res.json(data);
         })
         .catch(err => {

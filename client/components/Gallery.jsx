@@ -9,7 +9,7 @@ class Gallery extends React.Component {
     constructor() {
         super();
         let empty = {}
-        let placeholder = Array.from(new Array(12)).map(x => empty)
+        let placeholder = Array.from(new Array(15)).map(x => empty)
         this.state = {
             content: placeholder,
             openIndex: -1
@@ -24,6 +24,7 @@ class Gallery extends React.Component {
             })
     }
     renderImage(item, index) {
+	console.log(item)
         let onClick = () => {
             this.setState({
                 openIndex: index
