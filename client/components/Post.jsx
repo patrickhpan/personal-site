@@ -6,9 +6,9 @@ import flatten from 'array-flatten';
 import { renderItem } from './_Content';
 import keyify from '../js/keyify'
 import { getEntryBySlug } from '../js/contentful';
-import { footer } from '../json/BlogPost.json';
+import { footer } from '../json/Post.json';
 
-class BlogPost extends React.Component {
+class Post extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -56,7 +56,7 @@ class BlogPost extends React.Component {
         tags = tags.sort()
         let tagLinks = tags.map((tag, i) => {
             let urlTag = tag.replace(/\s+/g, '-');
-            return <Link className="tag" to={`/blog/tag/${urlTag}`}>
+            return <Link className="tag" to={`/posts/tag/${urlTag}`}>
                     {tag}
                 </Link>
         })
@@ -87,7 +87,7 @@ class BlogPost extends React.Component {
         let renderedTags = this.renderTags(this.state.post.fields.tags);        
         let renderedFooter = keyify(renderItem(footer));
 
-        return <div className="BlogPost"> 
+        return <div className="Post"> 
             <h2 className="title">{title}</h2>
             <div className="content-container">
                 {content}
@@ -98,4 +98,4 @@ class BlogPost extends React.Component {
     }
 }
 
-export default BlogPost
+export default Post

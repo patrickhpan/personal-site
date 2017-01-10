@@ -2,6 +2,7 @@ import request from 'request-promise';
 import resolveUrl from './resolveUrl'
 
 let newestEntriesCache = {};
+let tagEntriesCache = {};
 let entryBySlugCache = {};
 
 function getNewestEntries(options) {
@@ -10,7 +11,7 @@ function getNewestEntries(options) {
         let { limit, skip } = options;
         let qp = { limit, skip };
         return request({
-            url: resolveUrl('/blog/posts/newest'),
+            url: resolveUrl('/cms/posts/newest'),
             qp: qp
         })
             .then(JSON.parse)
@@ -25,14 +26,39 @@ function getNewestEntries(options) {
     }
 }
 
+function getEntriesByTag(tag, options) {
+    let key = JSON.stringify({
+        tag: tag,
+        options: options
+    })
+    if (tagEntriesCache[key] === undefined) {
+        let { limit, skip } = options;
+        let qp = { limit, skip };
+        return request({
+            url: resolveUrl(`/cms/posts/tag/${tag}`),
+            qp: qp
+        })
+            .then(JSON.parse)
+            .then(body => {
+                tagEntriesCache[key] = body;
+                return body;
+            });
+    } else {
+        return new Promise(resolve => {
+            resolve(tagEntriesCache[key])
+        });
+    }
+}
+
 function getEntryBySlug(slug) {
     if (!slug) return;
     return request({
-        url: resolveUrl(`/blog/posts/${slug}`)
+        url: resolveUrl(`/cms/posts/post/${slug}`)
     }).then(body => JSON.parse(body))
 }
 
 export {
     getNewestEntries,
+    getEntriesByTag,
     getEntryBySlug
 };

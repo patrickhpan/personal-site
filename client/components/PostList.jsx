@@ -2,14 +2,16 @@ import React from 'react';
 import Content from './_Content';
 
 import { getNewestEntries } from '../js/contentful';
-import staticContent from '../json/BlogList.json';
+import staticContent from '../json/PostList.json';
 
-class BlogList extends React.Component {
+class PostList extends React.Component {
     constructor() {
         super();
         this.state = {
             content: []
         }
+        this.staticContent = staticContent;
+        this.elementId = "PostList";
     }
     componentDidMount() {
         getNewestEntries('blog-post')
@@ -27,25 +29,27 @@ class BlogList extends React.Component {
                 })
             })
     }
-    processBlogPost(post) {
+    processPost(post) {
         let { title, blurb, slug } = post.fields;
         return {
             md: `**${title}**: ${blurb}`,
-            link: `/blog/${slug}`
+            link: `/posts/post/${slug}`
         }
     }
     render() {
-        let content= this.state.content.map(this.processBlogPost)
+        let content= this.state.content.map(this.processPost)
 
-        let data = staticContent;
+        let data = this.staticContent;
         data.content = content;
+        
+        let elementId = this.elementId;
 
         return <Content
             {...this.props}
             data={data}  
-            elementId="Blog"
+            elementId={elementId}
         />
     }
 }
 
-export default BlogList
+export default PostList

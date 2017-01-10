@@ -5,7 +5,7 @@ const lightroom = require('./routes/lightroom');
 
 let app = express.Router();
 
-app.use('/blog', contentful)
+app.use('/cms', contentful)
 app.use('/lightroom', lightroom)
 
 module.exports = app; 

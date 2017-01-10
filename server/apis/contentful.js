@@ -54,6 +54,18 @@ function getNewestEntries(contentType, options) {
         })
 }
 
+function getEntriesWithTag(contentType, tag, options = {}) {
+    return getNewestEntries(contentType, options)
+        .then(value => {
+            let { items } = value;
+            items = items.filter(item => {
+                return item.fields.tags.indexOf(tag) !== -1
+            }) 
+            value.items = items;
+            return value;
+        })
+}
+
 function getEntryBySlug(contentType, slug) {
     let cacheKey = `contentful#${contentType}#entry#${slug}`
 
@@ -87,5 +99,6 @@ function getEntryBySlug(contentType, slug) {
 module.exports = {
     createConnection,
     getNewestEntries,
+    getEntriesWithTag,
     getEntryBySlug
 }

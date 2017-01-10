@@ -24,7 +24,6 @@ class Gallery extends React.Component {
             })
     }
     renderImage(item, index) {
-	console.log(item)
         let onClick = () => {
             this.setState({
                 openIndex: index

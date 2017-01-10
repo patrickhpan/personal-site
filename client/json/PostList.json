@@ -2,7 +2,7 @@
     "header": "Recent Posts",
     "footer": {
         "md": "**Read more** things I wrote.",
-        "link": "/blog"
+        "link": "/posts"
     },
     "defaultLength": 4
 }

@@ -17,7 +17,25 @@ router.get('/posts/newest', (req, res) => {
     })
 })
 
-router.get('/posts/:slug', (req, res) => {
+router.get('/posts/tag/:tag', (req, res) => {
+    if (!req.params.tag) return;
+    myContentful.getEntriesWithTag('blog-post', 
+        req.params.tag, 
+        {
+            limit: req.query.limit,
+            skip: req.query.skip
+        }
+    ).then(data => {
+        res.json(data)
+    }).catch(err => {
+        if (err instanceof Error) {
+            console.error(err)
+        }
+        res.json(err)
+    })
+})
+
+router.get('/posts/post/:slug', (req, res) => {
     if (!req.params.slug) return;
     myContentful.getEntryBySlug('blog-post',
         req.params.slug

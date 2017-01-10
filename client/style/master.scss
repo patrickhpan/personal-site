@@ -70,7 +70,7 @@ div#App {
     }
 
     div.Portfolio,
-    div.BlogPost {
+    div.Post {
         @include flex($flex-direction: column);
         width: 100%;
         
