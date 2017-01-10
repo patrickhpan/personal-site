@@ -12,7 +12,7 @@ class Content extends React.Component {
         // get the limit of markdown items and the link from props
         let { limit, elementId } = this.props; 
         // get the default content
-        let { header, content, footer, defaultLength } = this.props.data;
+        let { href, header, content, footer, defaultLength } = this.props.data;
         
         if (limit === true) {
             // if trying to use default limit
@@ -30,8 +30,6 @@ class Content extends React.Component {
         }
         
         let renderedContent = renderContent([...content, footer]);
-
-        let href = `/${elementId.toLowerCase()}` 
 
         return <div id={elementId} className="Portfolio">
             <Link to={href}>

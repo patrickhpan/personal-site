@@ -1,8 +1,8 @@
 import React from 'react';
-import Content from './_Content';
+import Content from '../_Content';
 
-import { getNewestEntries } from '../js/contentful';
-import staticContent from '../json/PostList.json';
+import { getNewestEntries } from '../../js/contentful';
+import { AllPosts as staticContent } from '../../json/PostLists.json';
 
 class PostList extends React.Component {
     constructor() {
@@ -13,22 +13,32 @@ class PostList extends React.Component {
         this.staticContent = staticContent;
         this.elementId = "PostList";
     }
+
+    postFilter(post) {
+        return true;
+    }
+
+    postSource() {
+        return getNewestEntries('blog-post');
+    }
+
+    assignedData() {
+        return {};
+    }
+
     componentDidMount() {
-        getNewestEntries('blog-post')
+        this.postSource()
             .then(data => {
-                let items = data.items;
-                let limit = this.props.limit;
-                if (limit === true || !isNaN(limit)) {
-                    items = items.filter(item => !item.fields.isProject)
-                }
-                return items;
+                return data.items.filter(this.postFilter)
             })
             .then(items => {
+                console.log(items)
                 this.setState({
                     content: items
                 })
             })
     }
+
     processPost(post) {
         let { title, blurb, slug } = post.fields;
         return {
@@ -36,11 +46,12 @@ class PostList extends React.Component {
             link: `/posts/post/${slug}`
         }
     }
+    
     render() {
         let content= this.state.content.map(this.processPost)
 
         let data = this.staticContent;
-        data.content = content;
+        data = Object.assign({}, data, { content }, this.assignedData())
         
         let elementId = this.elementId;
 

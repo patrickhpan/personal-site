@@ -1,0 +1,29 @@
+{
+    "AllPosts": {
+        "href": "/posts",
+        "header": "Recent Posts",
+        "footer": {
+            "md": "**Read more** things I wrote.",
+            "link": "/posts"
+        },
+        "defaultLength": 4
+    },
+    "BlogPosts": {
+        "href": "/posts",
+        "header": "Recent Posts",
+        "footer": {
+            "md": "**Read more** things I wrote.",
+            "link": "/posts"
+        },
+        "defaultLength": 4
+    },
+    "Projects": {
+        "href": "/projects",
+        "header": "Projects",
+        "footer": {
+            "md": "**See all** of my projects.",
+            "link": "/projects"
+        },
+        "defaultLength": 4
+    }
+}

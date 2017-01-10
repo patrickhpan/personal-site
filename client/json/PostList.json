@@ -1,8 +1,0 @@
-{
-    "header": "Recent Posts",
-    "footer": {
-        "md": "**Read more** things I wrote.",
-        "link": "/posts"
-    },
-    "defaultLength": 4
-}

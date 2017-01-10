@@ -1,8 +1,8 @@
 import React from 'react';
 
 import About from './About';
-import Projects from './Projects';
-import PostList from './PostList';
+import Projects from './PostLists/Projects';
+import BlogPosts from './PostLists/BlogPosts';
 import Photography from './Photography';
 
 class Landing extends React.Component {
@@ -10,7 +10,7 @@ class Landing extends React.Component {
         return <div id="Landing">
             <About limit={true} />
             <Projects limit={true} />
-            <PostList limit={true} />
+            <BlogPosts limit={true} />
             <Photography limit={true} />
         </div>
     }
