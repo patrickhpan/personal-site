@@ -53,7 +53,7 @@ function getEntriesByTag(tag, options) {
 function getEntryBySlug(slug) {
     if (!slug) return;
     return request({
-        url: resolveUrl(`/cms/posts/post/${slug}`)
+        url: resolveUrl(`/cms/posts/${slug}`)
     }).then(body => JSON.parse(body))
 }
 

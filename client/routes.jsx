@@ -16,8 +16,8 @@ let routes = <Route path="/" component={App}>
     <Route path="/about" component={About} />
     <Route path="/projects" component={Projects} />
     <Route path="/posts" component={AllPosts} />
+    <Route path="/posts/:slug" component={Post} />
     <Route path="/posts/tag/:tag" component={PostsByTag} />
-    <Route path="/posts/post/:slug" component={Post} />
     <Route path="/photography" component={Photography} />
 </Route>
 

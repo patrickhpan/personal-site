@@ -43,7 +43,7 @@ class PostList extends React.Component {
         let { title, blurb, slug } = post.fields;
         return {
             md: `**${title}**: ${blurb}`,
-            link: `/posts/post/${slug}`
+            link: `/posts/${slug}`
         }
     }
     
