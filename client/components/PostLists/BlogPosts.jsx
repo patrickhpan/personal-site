@@ -11,7 +11,6 @@ class BlogPosts extends PostList {
     }
 
     postFilter(post) {
-        console.log(post)
         return (post.fields.isProject === false)
     }
 }

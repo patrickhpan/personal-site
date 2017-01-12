@@ -14,4 +14,6 @@ let router = <Router
     history={history}
 />
 
+window.activeComponent = {};
+
 ReactDOM.render(router, document.getElementById("app-root"))

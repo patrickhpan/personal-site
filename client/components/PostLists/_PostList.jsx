@@ -32,7 +32,6 @@ class PostList extends React.Component {
                 return data.items.filter(this.postFilter)
             })
             .then(items => {
-                console.log(items)
                 this.setState({
                     content: items
                 })
@@ -48,7 +47,7 @@ class PostList extends React.Component {
     }
     
     render() {
-        let content= this.state.content.map(this.processPost)
+        let content = this.state.content.map(this.processPost)
 
         let data = this.staticContent;
         data = Object.assign({}, data, { content }, this.assignedData())

@@ -5,9 +5,9 @@ import Projects from './PostLists/Projects';
 import BlogPosts from './PostLists/BlogPosts';
 import Photography from './Photography';
 
-class Landing extends React.Component {
+class Home extends React.Component {
     render() {
-        return <div id="Landing">
+        return <div id="Home">
             <About limit={true} />
             <Projects limit={true} />
             <BlogPosts limit={true} />
@@ -16,4 +16,4 @@ class Landing extends React.Component {
     }
 }
 
-export default Landing;
+export default Home;

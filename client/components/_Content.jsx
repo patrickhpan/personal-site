@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from './_TopLink'
+// import Footer from './Footer';
 import marked from 'marked';
 import flatten from 'array-flatten';
 
+
 import keyify from '../js/keyify';
+import createFooter from '../js/createFooter';
 import images from '../img/_images';
-import defaultFooter from '../json/SectionFooter.json'
+// import defaultFooter from '../json/SectionFooter.json'
 
 class Content extends React.Component {
     render() {
@@ -26,7 +29,7 @@ class Content extends React.Component {
         } else {
             // if there is no limit, then we are not on the homepage
             // replace the footer with a "back to home" link
-            footer = defaultFooter
+            footer = createFooter();
         }
         
         let renderedContent = renderContent([...content, footer]);
@@ -36,19 +39,19 @@ class Content extends React.Component {
                 <h2 className="title">{header}</h2>
             </Link>
             {renderedContent}
-        </div>
+        </div> //wow such div
     }
 }
 
 function renderItem(item) {
-    let { md, img, link } = item;
+    let { md, img, link, onClick } = item;
 
     // dangerouslySetInnerHTML object    
     let renderedMD = {
         __html: marked(md)
     };
 
-    let toReturn = [];
+    let toReturn = []; //wow such empty
 
     // if there is an image, render it before the content    
     if(img) {
@@ -62,7 +65,7 @@ function renderItem(item) {
         if (/^\//.test(link)) {
             // if there is a relative link, use a react-router Link
             toReturn.push(<Link 
-                to={link}
+                to={link} //much link very to
                 className="content-md"
                 dangerouslySetInnerHTML={renderedMD}
             />);
@@ -74,6 +77,13 @@ function renderItem(item) {
                 dangerouslySetInnerHTML={renderedMD}
             />);
         }
+    } else if(onClick && typeof onClick == "function") {
+        // if there is an onclick, render a regular <a> with an onclick
+        toReturn.push(<a 
+            className="content-md"
+            dangerouslySetInnerHTML={renderedMD}
+            onClick={onClick}
+        />);
     } else {
         // if there is no link, use a regular div
         toReturn.push(<div

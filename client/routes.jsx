@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import Landing from './components/Landing';
+import Home from './components/Home';
 import About from './components/About'
 import AllPosts from './components/PostLists/AllPosts'
 import BlogPosts from './components/PostLists/BlogPosts';
@@ -12,7 +12,7 @@ import Post from './components/Post';
 import Photography from './components/Photography';
 
 let routes = <Route path="/" component={App}>
-    <IndexRoute component={Landing} />
+    <IndexRoute component={Home} />
     <Route path="/about" component={About} />
     <Route path="/projects" component={Projects} />
     <Route path="/posts" component={AllPosts} />

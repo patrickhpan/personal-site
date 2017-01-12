@@ -12,7 +12,6 @@ class Projects extends PostList {
     }
 
     postFilter(post) {
-        console.log(post)
         return (post.fields.isProject === true)
     }
 }
