@@ -17,7 +17,8 @@ $portfolio-header-size: 3em;
 $portfolio-mobile-header-size: 2.2em;
 $portfolio-header-under: 3em * (1em / $portfolio-header-size);
 $portfolio-mobile-header-under: 3em * (1em / $portfolio-mobile-header-size);
-$portfolio-under: 3.5em;
+$portfolio-under: 4em;
+$portfolio-mobile-under: 3em;
 
 $content-padding-side: 0.6em;
 $content-border-width: 0.25em;
@@ -33,7 +34,7 @@ $content-img-margin: 2em;
 $content-img-box-shadow: 0 0 10px -4px $black;
 
 $content-border-fade: 0.45s;
-$content-under: 1.5em;
+$content-under: 1.35em;
 
 $tag-border-width: $under-name-border-width;
 $tag-border-start-color: $content-border-start-color;

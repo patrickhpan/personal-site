@@ -28,9 +28,9 @@ div#App {
     
     div#Header {
         margin-bottom: $portfolio-under; 
-				@media screen and (max-width: 720px) {
-					margin-bottom: $portfolio-mobile-header-under;
-				}
+        @media screen and (max-width: 720px) {
+            margin-bottom: $portfolio-mobile-under;
+        }
         
         h1 {
             text-align: center;

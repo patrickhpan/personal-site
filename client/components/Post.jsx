@@ -8,6 +8,8 @@ import keyify from '../js/keyify'
 import { getEntryBySlug } from '../js/contentful';
 import { footer } from '../json/Post.json';
 
+const RENDER_TAGS = false;
+
 class Post extends React.Component {
     constructor() {
         super();
@@ -91,7 +93,7 @@ class Post extends React.Component {
             <h2 className="title">{title}</h2>
             <div className="content-container">
                 {content}
-                {renderedTags}
+                {RENDER_TAGS ? renderedTags : null}
                 {renderedFooter}
             </div>
         </div>
