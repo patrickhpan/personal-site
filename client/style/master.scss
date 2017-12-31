@@ -261,3 +261,10 @@ div#App {
     }
 }
 
+code {
+    padding: $code-padding;
+    color: $code-color;
+    background-color: $code-bg-color;
+    font-family: $code-font-family;
+}
+
